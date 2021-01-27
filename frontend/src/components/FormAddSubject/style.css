@@ -10,6 +10,7 @@ form label {
 }
 
 form input {
+  display: block;
   width: 500px;
   max-width: 250px;
 
@@ -24,7 +25,7 @@ form input {
   font-weight: 500;
 }
 
-form .submit-button {
+form button {
   margin-top: 30px;
   border-radius: 5px;
   background: var(--blue);
@@ -33,4 +34,9 @@ form .submit-button {
   font-size: 20px;
   font-weight: 700;
   color: var(--white);
+}
+
+form button:disabled {
+  opacity: 0.8;
+  cursor: default;
 }

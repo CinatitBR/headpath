@@ -25,7 +25,7 @@ const SubjectController = {
 
       return res
         .status(201)
-        .json({ ok: 'Matéria adicionada com sucesso!'})
+        .json({ success: 'Matéria adicionada com sucesso!'})
     }
     catch (err) {
       next(err)
