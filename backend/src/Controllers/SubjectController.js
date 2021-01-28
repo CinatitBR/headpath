@@ -19,6 +19,10 @@ const SubjectController = {
         subject: []
       }
 
+      if (!subject || !duration) {
+        errors.subject.push('Por favor, preencha o campo corretamente.')
+      }
+
       const subjectExists = await Subject.findOne({ subject })
 
       // Check if subject already exists
