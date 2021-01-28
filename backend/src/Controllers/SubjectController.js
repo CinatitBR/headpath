@@ -14,7 +14,7 @@ const SubjectController = {
     try {
       const { subject, duration } = req.body
 
-      const success = { success: 'Matéria adicionada com sucesso!' }
+      const success = { ok: 'Matéria adicionada com sucesso!' }
       const errors = {
         subject: []
       }

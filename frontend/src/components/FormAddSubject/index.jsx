@@ -6,8 +6,8 @@ const FormAddSubject = () => {
   const [subject, setSubject] = useState('')
 
   const [isLoaded, setIsLoaded] = useState(true)
-  const [success, setSuccess] = useState(null)
-  const [error, setError] = useState(null) 
+  const [success, setSuccess] = useState({})
+  const [errors, setErrors] = useState({}) 
 
   async function postSubject() {
     const response = await fetch('/subjects/create', { 
@@ -21,11 +21,11 @@ const FormAddSubject = () => {
     const result = await response.json()
 
     if (response.ok) {
-      setSuccess(result.success)
+      setSuccess(result)
       setSubject('')
     } 
     else {
-      setError(result.error)
+      setErrors(result)
     }
 
     setIsLoaded(true)
@@ -44,6 +44,13 @@ const FormAddSubject = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+
+      <div className="success">
+        {success.ok && 
+          success.ok  
+        }
+      </div>
+
       <label>
         Nome da matéria
       
@@ -55,14 +62,11 @@ const FormAddSubject = () => {
           autoFocus 
         />  
       </label>
-
-      {error && 
-        <p>{error}</p>
-      }
-
-      {success && 
-        <p>{success}</p>
-      }
+      <div className="subject-error">
+        {errors.subject && 
+          errors.subject[0]
+        }
+      </div>
 
       <button 
         type="submit"
