@@ -1,5 +1,7 @@
 import db from '../db.js'
 
+const error = 'Houve um erro. Por favor, tente novamente.'
+
 const Subject = {
   findAll: async () => {
     const sql = 'SELECT * FROM `subject`'
