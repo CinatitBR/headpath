@@ -5,11 +5,27 @@ form  {
   flex-direction: column;
 }
 
-form label {
+form .success {
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+form .field {
+  margin-top: 10px;
+}
+
+form .error {
+  color: #a4363c;
+  margin-top: 2px;
+}
+
+form .field label {
   font-size: 16px;
 }
 
-form input {
+form .field input {
   display: block;
   width: 500px;
   max-width: 250px;
@@ -20,7 +36,7 @@ form input {
   border-radius: 0px;
   background: inherit;
 
-  font-size: 18px;
+  font-size: 19px;
   color: var(--black);
   font-weight: 500;
 }

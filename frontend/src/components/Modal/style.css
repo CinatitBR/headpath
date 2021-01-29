@@ -40,10 +40,6 @@
   color: var(--brand-color);
 }
 
-.modal-body {
-  margin-top: 30px;
-}
-
 /* Modal Overlay */
 .modal-overlay {
   position: fixed;

@@ -66,42 +66,44 @@ const FormAddSubject = () => {
         }
       </div>
 
-      <div className="field">
-        <label>
-          Nome da matéria
-        
-          <input 
-            type="text"
-            name="subject"
-            value={values.subject} 
-            onChange={handleInputChange} 
-            autoFocus 
-          />  
-        </label>
+      <div className="fields">
+        <div className="field">
+          <label>
+            Nome da matéria
+          
+            <input 
+              type="text"
+              name="subject"
+              value={values.subject} 
+              onChange={handleInputChange} 
+              autoFocus 
+            />  
+          </label>
 
-        <div className="subject-error">
-          {errors.subject &&
-            errors.subject
-          }
+          <div className="error">
+            {errors.subject &&
+              errors.subject
+            }
+          </div>
         </div>
-      </div>
+      
+        <div className="field">
+          <label>
+            Duração
 
-      <div className="field">
-        <label>
-          Duração
+            <input 
+              type="text" 
+              name="duration"
+              value={values.duration} 
+              onChange={handleInputChange} 
+            />
+          </label>
 
-          <input 
-            type="text" 
-            name="duration"
-            value={values.duration} 
-            onChange={handleInputChange} 
-          />
-        </label>
-
-        <div className="duration-error">
-          {errors.duration &&
-            errors.duration
-          }
+          <div className="error">
+            {errors.duration &&
+              errors.duration
+            }
+          </div>
         </div>
       </div>
 

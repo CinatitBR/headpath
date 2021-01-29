@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 
+import './style.css'
+
 const Modal = ({ show, onClose, children }) => {
   const scrollbarWidth = window.innerWidth - document.body.clientWidth
 
