@@ -3,36 +3,51 @@ import { useState } from 'react'
 import './style.css'
 
 const FormAddSubject = () => {
-  const [subject, setSubject] = useState('')
+  const initialValues = {
+    subject: '',
+    duration: '00:00'
+  }
 
+  const [values, setValues] = useState(initialValues)
   const [isLoaded, setIsLoaded] = useState(true)
+
   const [success, setSuccess] = useState({})
   const [errors, setErrors] = useState({}) 
 
   async function postSubject() {
+    const data = {
+      subject: values.subject, 
+      duration: values.duration
+    }
+
     const response = await fetch('/subjects/create', { 
       headers: {
         'Content-Type': 'application/json'
       }, 
       method: 'POST',
-      body: JSON.stringify({subject, duration: ''})
+      body: JSON.stringify(data)
     })
 
-    const result = await response.json()
+    const feedback = await response.json()
 
     if (response.ok) {
-      setSuccess(result)
-      setSubject('')
+      setSuccess(feedback)
+      setValues(initialValues)
     } 
     else {
-      setErrors(result)
+      setErrors(feedback)
     }
 
     setIsLoaded(true)
   }
 
-  function handleChange(e) {
-    setSubject(e.target.value)
+  function handleInputChange(e) {
+    const { name, value } = e.target
+
+    setValues({
+      ...values,
+      [name]: value
+    })
   }
 
   function handleSubmit(e) {
@@ -51,22 +66,45 @@ const FormAddSubject = () => {
         }
       </div>
 
-      <label>
-        Nome da matéria
-      
-        <input 
-          type="text"
-          name="subject"
-          value={subject} 
-          onChange={handleChange} 
-          autoFocus 
-        />  
-      </label>
-      <div className="subject-error">
-        {errors.subject &&
-          errors.subject
-        }
+      <div className="field">
+        <label>
+          Nome da matéria
+        
+          <input 
+            type="text"
+            name="subject"
+            value={values.subject} 
+            onChange={handleInputChange} 
+            autoFocus 
+          />  
+        </label>
+
+        <div className="subject-error">
+          {errors.subject &&
+            errors.subject
+          }
+        </div>
       </div>
+
+      <div className="field">
+        <label>
+          Duração
+
+          <input 
+            type="text" 
+            name="duration"
+            value={values.duration} 
+            onChange={handleInputChange} 
+          />
+        </label>
+
+        <div className="duration-error">
+          {errors.duration &&
+            errors.duration
+          }
+        </div>
+      </div>
+
 
       <button 
         type="submit"
