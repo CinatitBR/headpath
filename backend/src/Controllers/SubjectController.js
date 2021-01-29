@@ -16,22 +16,28 @@ const SubjectController = {
 
       const success = { ok: 'Matéria adicionada com sucesso!' }
       const errors = {
-        subject: []
+        subject: null,
+        duration: null
       }
 
-      if (!subject || !duration) {
-        errors.subject.push('Por favor, preencha o campo corretamente.')
+      // Check if value exists
+      if (!subject) {
+        errors.subject = 'Por favor, preencha o campo corretamente'
+      }
+
+      if (!duration) {
+        errors.duration = 'Por favor, preencha o campo corretamente'
       }
 
       const subjectExists = await Subject.findOne({ subject })
 
       // Check if subject already exists
       if (subjectExists) {
-        errors.subject.push('Essa matéria já existe.')
+        errors.subject = 'Essa matéria já existe'
       }
 
       // If there is any error
-      if (errors.subject.length > 0) {
+      if (errors.subject || errors.duration) {
         return res
           .status(400)
           .json(errors)

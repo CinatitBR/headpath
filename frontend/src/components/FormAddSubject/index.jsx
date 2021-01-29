@@ -15,7 +15,7 @@ const FormAddSubject = () => {
         'Content-Type': 'application/json'
       }, 
       method: 'POST',
-      body: JSON.stringify({subject, duration: '00:45:00'})
+      body: JSON.stringify({subject, duration: ''})
     })
 
     const result = await response.json()
@@ -63,8 +63,8 @@ const FormAddSubject = () => {
         />  
       </label>
       <div className="subject-error">
-        {errors.subject && 
-          errors.subject[0]
+        {errors.subject &&
+          errors.subject
         }
       </div>
 
