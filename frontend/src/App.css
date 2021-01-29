@@ -149,82 +149,9 @@ header .plus-icon {
   font-weight: 500;
 }
 
-
 .next-subjects .see-more {
   margin-top: 10px;
   margin-left: 10px;
   font-size: 25px;
   color: var(--brand-color);
-}
-
-/* Modal Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-
-  width: 100vw;
-  height: 100vh;
-  background: rgba(43, 43, 43, 0.7);
-}
-
-/* Modal */
-.modal {
-  width: 100%;
-  max-width: 500px;
-  background: var(--background-color);
-  padding: 10px;
-  border-radius: 10px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-.close-modal {
-  color: var(--blue);
-  font-size: 18px;
-
-  display: block;
-  margin-left: auto;
-}
-
-.modal-header {
-  margin-top: 4px;
-  width: 100%;
-  padding: 4px;
-  background: var(--white);
-  border-radius: 10px;
-  text-align: center;
-}
-
-.modal-header h3 {
-  font-weight: 500;
-  font-size: 24px;
-  color: var(--brand-color);
-}
-
-.modal-body {
-  margin-top: 30px;
-}
-
-/* Animation */
-.modal {
-  animation-name: modal-animation;
-  animation-duration: 250ms;
-  animation-fill-mode: backwards;
-  animation-timing-function: ease;
-}
-
-@keyframes modal-animation {
-  0% {
-    opacity: 0.1;
-    top: 35%;
-  }
 }

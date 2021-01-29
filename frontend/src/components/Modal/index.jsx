@@ -24,7 +24,6 @@ const Modal = ({ show, onClose, children }) => {
   return (
     <div 
       className="modal-overlay" 
-      // style={{display: show ? 'block' : 'none'}}
       onClick={onClose}
     >
       <div className="modal" onClick={handlePropagation}>
