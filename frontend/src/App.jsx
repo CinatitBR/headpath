@@ -31,12 +31,12 @@ function App() {
       </div>
     
       <Modal show={showModal} onClose={handleModal}>
-        <button type="button" className="close-modal" onClick={handleModal}>
-          <FontAwesomeIcon icon={faTimes} />
-        </button>
-
         <div className="modal-header">
           <h3>Adicionar matéria</h3>
+
+          <button type="button" className="close-modal" onClick={handleModal}>
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
         </div>
 
         <div className="modal-body">
