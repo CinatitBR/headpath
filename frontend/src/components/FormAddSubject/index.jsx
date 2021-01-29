@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import InputDuration from '../InputDuration/'
+
 import './style.css'
 
 const FormAddSubject = () => {
@@ -87,7 +89,7 @@ const FormAddSubject = () => {
           </div>
         </div>
       
-        <div className="field">
+        {/* <div className="field">
           <label>
             Duração
 
@@ -97,6 +99,20 @@ const FormAddSubject = () => {
               value={values.duration} 
               onChange={handleInputChange} 
             />
+          </label>
+
+          <div className="error">
+            {errors.duration &&
+              errors.duration
+            }
+          </div>
+        </div> */}
+
+        <div className="field">
+          <label>
+            Duração
+
+            <InputDuration />
           </label>
 
           <div className="error">
