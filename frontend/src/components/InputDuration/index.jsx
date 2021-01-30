@@ -3,61 +3,66 @@ import { useState } from 'react'
 import './style.css'
 
 const InputDuration = () => {
-  const defaultFocusState = [false, false, false, false]
+  const [duration, setDuration] = useState('0000')
 
-  const [digitFocus, setDigitFocus] = useState(defaultFocusState)
+  function handleInputChange(e) {
+    let { value } = e.target
 
-  function handleDigitFocus(e) {
-    const digitIndex = e.target.dataset.index
+    const valueLength = value.length
 
-    const newFocusState = [...defaultFocusState]
-    newFocusState[digitIndex] = true
+    if (valueLength > 4) {
+      value = value.slice(1)
+    }
 
-    setDigitFocus(newFocusState)
+    if (valueLength === 3) {
+      value = '0' + value
+    }
+
+    setDuration(value)
   }
 
   return (
     <div className="input-duration">
       <div>
         <span 
-          className={`digit ${digitFocus[3] && 'cursor'}`} 
+          className={`digit`} 
           tabIndex="0"
           data-index="3"
-          onFocus={handleDigitFocus}
         >
-          0
+          { duration[0] }
         </span>
 
         <span 
-          className={`digit ${digitFocus[2] && 'cursor'}`} 
+          className={`digit`} 
           tabIndex="0"
           data-index="2"
-          onFocus={handleDigitFocus}
         >
-          0
+          { duration[1] }
         </span>
         <span className="symbol">h</span>
 
         <span 
-          className={`digit ${digitFocus[1] && 'cursor'}`} 
+          className={`digit`} 
           tabIndex="0"
           data-index="1"
-          onFocus={handleDigitFocus}
         >
-          0
+          { duration[2] }
         </span>
         <span 
-          className={`digit ${digitFocus[0] && 'cursor'}`} 
+          className={`digit`} 
           tabIndex="0"
           data-index="0"
-          onFocus={handleDigitFocus}
         >
-          0
+          { duration[3] }
         </span>
         <span className="symbol">m</span>
       </div>
 
-      <input type="tel" />
+      <input 
+        type="tel" 
+        value={duration} 
+        onChange={handleInputChange} 
+      />
     </div>
   )
 }

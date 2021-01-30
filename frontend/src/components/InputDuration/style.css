@@ -9,12 +9,11 @@
 }
 
 .input-duration .digit {
-  padding: 0 2px;
   border-right: 1px solid transparent;
 }
 
 .input-duration .digit.cursor {
-  border-right: 1px solid #000;
+  border-right: 1px solid var(--black);
 }
 
 .input-duration .symbol {
@@ -22,7 +21,7 @@
   padding-right: 10px;
 }
 
-.input-duration input {
+/* .input-duration input {
   position: absolute;
   height: 0px;
   left: 20px;
@@ -30,4 +29,4 @@
   width: 0px;
   opacity: 0;
   z-index: -2;
-}
+} */

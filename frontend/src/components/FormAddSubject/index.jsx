@@ -46,24 +46,35 @@ const FormAddSubject = () => {
   function handleInputChange(e) {
     const { name, value } = e.target
 
-    if (name === 'duration'
-      && value.toString().length > 4
-    ) {
-      const strValue = value.toString()
-      const newValue = strValue.substring(1)
+    // if (name === 'duration') {
+    //   if (value.toString().length > 4) {
+    //     const strValue = value.toString()
+    //     const newValue = strValue.substring(1)
+        
+    //     setValues({
+    //       ...values,
+    //       [name]: newValue
+    //     })
+    //   }
 
-      setValues({
-        ...values,
-        [name]: newValue
-      })
-
-      return
-    }
+    //   return
+    // }
 
     setValues({
       ...values,
       [name]: value
     })
+  }
+
+  function handleKeyDown(e) {
+    const element = e.target
+    const keyCode = e.keyCode
+
+    if (element.selectionStart === 1 
+      && keyCode === 37
+    ) {
+      e.preventDefault()
+    }
   }
 
   function handleSubmit(e) {
@@ -103,7 +114,7 @@ const FormAddSubject = () => {
           </div>
         </div>
       
-        <div className="field">
+        {/* <div className="field">
           <label>
             Duração
 
@@ -112,6 +123,7 @@ const FormAddSubject = () => {
               pattern="\d*" 
               name="duration"
               value={values.duration} 
+              onKeyDown={handleKeyDown}
               onChange={handleInputChange} 
             />
           </label>
@@ -121,9 +133,9 @@ const FormAddSubject = () => {
               errors.duration
             }
           </div>
-        </div>
+        </div> */}
 
-        {/* <div className="field">
+        <div className="field">
           <label>
             Duração
 
@@ -135,7 +147,7 @@ const FormAddSubject = () => {
               errors.duration
             }
           </div>
-        </div> */}
+        </div>
       </div>
 
       <button 
