@@ -7,7 +7,7 @@ import './style.css'
 const FormAddSubject = () => {
   const initialValues = {
     subject: '',
-    duration: '00:00'
+    duration: '0000'
   }
 
   const [values, setValues] = useState(initialValues)
@@ -45,6 +45,20 @@ const FormAddSubject = () => {
 
   function handleInputChange(e) {
     const { name, value } = e.target
+
+    if (name === 'duration'
+      && value.toString().length > 4
+    ) {
+      const strValue = value.toString()
+      const newValue = strValue.substring(1)
+
+      setValues({
+        ...values,
+        [name]: newValue
+      })
+
+      return
+    }
 
     setValues({
       ...values,
@@ -89,12 +103,13 @@ const FormAddSubject = () => {
           </div>
         </div>
       
-        {/* <div className="field">
+        <div className="field">
           <label>
             Duração
 
             <input 
-              type="text" 
+              type="tel"
+              pattern="\d*" 
               name="duration"
               value={values.duration} 
               onChange={handleInputChange} 
@@ -106,9 +121,9 @@ const FormAddSubject = () => {
               errors.duration
             }
           </div>
-        </div> */}
+        </div>
 
-        <div className="field">
+        {/* <div className="field">
           <label>
             Duração
 
@@ -120,7 +135,7 @@ const FormAddSubject = () => {
               errors.duration
             }
           </div>
-        </div>
+        </div> */}
       </div>
 
       <button 
