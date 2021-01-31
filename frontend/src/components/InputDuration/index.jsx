@@ -5,12 +5,12 @@ import DigitDuration from '../DigitDuration/'
 import './style.css'
 
 const InputDuration = () => {
-  const [duration, setDuration] = useState('0000')
+  const [duration, setDuration] = useState('')
 
   function handleInputChange(e) {
     let { value } = e.target
   
-    const regex = /^[0-9]+$/
+    const regex = /^[0-9]+$|^$/
     const valueLength = value.length
 
     const isValid = regex.test(value)
@@ -21,23 +21,34 @@ const InputDuration = () => {
     if (valueLength > 4) {
       value = value.substring(1)
     }
-    if (valueLength === 3) {
-      value = '0' + value
-    }
-
+    
     setDuration(value)
   }
 
   return (
     <div className="input-duration">
       <div>
-        <DigitDuration value={duration[0]} />
-        <DigitDuration value={duration[1]} />
-        <span className="symbol">h</span>
+        <DigitDuration value={duration[duration.length - 4]} />
+        <DigitDuration value={duration[duration.length - 3]} />
+        <span 
+          className={`
+            symbol 
+            ${!duration[duration.length - 3] && 'unsure'}
+          `}
+        >
+          h
+        </span>
 
-        <DigitDuration value={duration[2]}/>
-        <DigitDuration value={duration[3]} />
-        <span className="symbol">m</span>
+        <DigitDuration value={duration[duration.length - 2]}/>
+        <DigitDuration value={duration[duration.length - 1]} />
+        <span 
+          className={`
+            symbol 
+            ${!duration[duration.length - 1] && 'unsure'}
+          `}
+        >
+          m
+        </span>
       </div>
 
       <input 

@@ -3,7 +3,8 @@
   --brand-color: #E75050;
   --white: #fff;
   --blue: #00168acc;
-  --black: rgba(30, 37, 50, 0.85);
+  --light-black: rgba(30, 37, 50, 0.85);
+  --black: rgb(30, 37, 50);
 }
 
 * {
@@ -15,7 +16,7 @@
 body {
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
-  color: var(--black);
+  color: var(--light-black);
   background: var(--background-color);
 }
 

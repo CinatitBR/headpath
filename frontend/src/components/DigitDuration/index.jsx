@@ -1,13 +1,13 @@
-import './style.css'
-
 const DigitDuration = ({ value }) => {
-
   return (
     <span 
-      className={`digit`} 
+      className={`
+        digit 
+        ${!value && 'unsure'}
+      `} 
       tabIndex="0"
     >
-      { value }
+      { value ? value : '0' }
     </span>
   )
 }

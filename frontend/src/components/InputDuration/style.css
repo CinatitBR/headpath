@@ -2,14 +2,13 @@
   position: relative;
   border-bottom: 2px solid var(--brand-color);
   padding-bottom: 2px;
-
-  font-size: 23px;
-  color: var(--black);
-  font-weight: 500;
 }
 
 .input-duration .digit {
   border-right: 1px solid transparent;
+  font-size: 23px;
+  color: var(--black);
+  font-weight: 500;
 }
 
 .input-duration .digit.cursor {
@@ -17,8 +16,13 @@
 }
 
 .input-duration .symbol {
+  color: var(--black);
   font-size: 18px;
   padding-right: 10px;
+}
+
+.input-duration .unsure {
+  color: #646464;
 }
 
 /* .input-duration input {
