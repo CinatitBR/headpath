@@ -18,7 +18,7 @@ const InputDuration = () => {
     if (!isValid) {
       return
     }
-    if (valueLength > 4) {
+    if (valueLength > 3) {
       value = value.substring(1)
     }
     
@@ -28,7 +28,6 @@ const InputDuration = () => {
   return (
     <div className="input-duration">
       <div>
-        <DigitDuration value={duration[duration.length - 4]} />
         <DigitDuration value={duration[duration.length - 3]} />
         <span 
           className={`
