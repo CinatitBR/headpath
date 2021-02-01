@@ -46,22 +46,6 @@ const InputDuration = () => {
     setCursorPos(newCursorPos)
   }
 
-  // function handleKeyUp(e) {
-  //   const { keyCode, target } = e
-  //   const { selectionStart } = target
-
-  //   const leftArrowCode = 37
-  //   const rightArrowCode = 39
-
-  //   if (keyCode === leftArrowCode || keyCode === rightArrowCode) {
-  //     const newCursorPos = [...initialCursorPos]
-
-  //     newCursorPos[selectionStart] = true
-
-  //     setCursorPos(newCursorPos)
-  //   }
-  // }
-
   function handleKeyDown(e) {
     const { target, keyCode } = e
     const { value, selectionStart } = target
