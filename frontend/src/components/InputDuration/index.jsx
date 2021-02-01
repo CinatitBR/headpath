@@ -4,8 +4,7 @@ import DigitDuration from '../DigitDuration/'
 
 import './style.css'
 
-const InputDuration = () => {
-  const [duration, setDuration] = useState('')
+const InputDuration = ({ duration, onChange }) => {
   const [isOnFocus, setIsOnFocus] = useState(false)
   const [cursor, setCursor] = useState(false)
 
@@ -33,18 +32,6 @@ const InputDuration = () => {
     }
   }
 
-  function handleInputChange(e) {
-    const { value } = e.target
-
-    let newValue = value
-  
-    if (value.length > 3) {
-      newValue = value.substring(1)
-    }
-
-    setDuration(newValue)
-  }
-
   function handleBlur(e) {
     setIsOnFocus(false)
     setCursor(false)
@@ -52,7 +39,7 @@ const InputDuration = () => {
 
   return (
     <div 
-      className={`input-duration ${isOnFocus && 'focus'}`}
+      className={`input-duration ${isOnFocus ? 'focus' : ''}`}
     >
       <div>
         <DigitDuration 
@@ -61,7 +48,7 @@ const InputDuration = () => {
         <span 
           className={`
             symbol 
-            ${!duration[duration.length - 3] && 'unsure'}
+            ${!duration[duration.length - 3] ? 'unsure' : ''}
           `}
         >
           h
@@ -77,7 +64,7 @@ const InputDuration = () => {
         <span 
           className={`
             symbol 
-            ${!duration[duration.length - 1] && 'unsure'}
+            ${!duration[duration.length - 1] ? 'unsure' : ''}
           `}
         >
           m
@@ -86,11 +73,12 @@ const InputDuration = () => {
 
       <input 
         type="tel" 
+        name="duration"
         value={duration} 
         onFocus={handleFocus}
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
-        onChange={handleInputChange} 
+        onChange={onChange} 
       />
     </div>
   )

@@ -7,7 +7,7 @@ import './style.css'
 const FormAddSubject = () => {
   const initialValues = {
     subject: '',
-    duration: '0000'
+    duration: ''
   }
 
   const [values, setValues] = useState(initialValues)
@@ -66,15 +66,19 @@ const FormAddSubject = () => {
     })
   }
 
-  function handleKeyDown(e) {
-    const element = e.target
-    const keyCode = e.keyCode
+  function handleDurationChange(e) {
+    const { value } = e.target
 
-    if (element.selectionStart === 1 
-      && keyCode === 37
-    ) {
-      e.preventDefault()
+    let newValue = value
+  
+    if (value.length > 3) {
+      newValue = value.substring(1)
     }
+
+    setValues({
+      ...values,
+      duration: newValue
+    })
   }
 
   function handleSubmit(e) {
@@ -114,32 +118,14 @@ const FormAddSubject = () => {
           </div>
         </div>
       
-        {/* <div className="field">
-          <label>
-            Duração
-
-            <input 
-              type="tel"
-              pattern="\d*" 
-              name="duration"
-              value={values.duration} 
-              onKeyDown={handleKeyDown}
-              onChange={handleInputChange} 
-            />
-          </label>
-
-          <div className="error">
-            {errors.duration &&
-              errors.duration
-            }
-          </div>
-        </div> */}
-
         <div className="field">
           <label>
             Duração
 
-            <InputDuration />
+            <InputDuration 
+              duration={values.duration} 
+              onChange={handleDurationChange}
+            />
           </label>
 
           <div className="error">
