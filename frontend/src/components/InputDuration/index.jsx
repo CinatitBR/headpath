@@ -5,89 +5,49 @@ import DigitDuration from '../DigitDuration/'
 import './style.css'
 
 const InputDuration = () => {
-  const initialCursorPos = [false, false, false]
-
   const [duration, setDuration] = useState('')
   const [isOnFocus, setIsOnFocus] = useState(false)
-  const [cursorPos, setCursorPos] = useState(initialCursorPos)
-
-  function handleInputChange(e) {
-    let { value } = e.target
-  
-    const regex = /^[0-9]+$|^$/
-    const valueLength = value.length
-
-    const isValid = regex.test(value)
-
-    if (!isValid) {
-      return
-    }
-    if (valueLength > 3) {
-      value = value.substring(1)
-    }
-
-    const newCursorPos = [...initialCursorPos]
-    newCursorPos[valueLength] = true
-
-    setCursorPos(newCursorPos)
-    
-    setDuration(value)
-  }
+  const [cursor, setCursor] = useState(false)
 
   function handleFocus(e) {
-    const { value } = e.target 
-    const valueLength = value.length
+    const { target } = e
+    const { value } = target 
 
+    target.selectionStart = value.length
+    
     setIsOnFocus(true)
-
-    const newCursorPos = [...initialCursorPos]
-    newCursorPos[valueLength] = true
-
-    setCursorPos(newCursorPos)
+    setCursor(true)
   }
 
   function handleKeyDown(e) {
-    const { target, keyCode } = e
-    const { value, selectionStart } = target
+    const { key } = e
 
-    const leftArrowCode = 37
-    const upArrowCode = 38
-    const rightArrowCode = 39
-    const downKeyCode = 40
+    const allowedDigits = '0123456789'
 
-    let nextSelectionStart
-    
-    // Calculate the start of next selection
-    if (keyCode === leftArrowCode) {
-      nextSelectionStart = selectionStart - 1
+    // Prevents user from typing not allowed keys
+    if (!allowedDigits.includes(key) 
+      && key !== 'Backspace'
+    ) {
+      e.preventDefault()
+      return
     }
-    else if (keyCode === rightArrowCode) {
-      nextSelectionStart = selectionStart + 1
-    }
+  }
 
-    // Prevents user from going to first position when reaches maximum length
-    if (value.length === 3) {
-      if (keyCode === upArrowCode || nextSelectionStart === 0) {
-        e.preventDefault()
-        return
-      }
+  function handleInputChange(e) {
+    const { value } = e.target
+
+    let newValue = value
+  
+    if (value.length > 3) {
+      newValue = value.substring(1)
     }
 
-    const arrowKeyCodes = [leftArrowCode, upArrowCode, rightArrowCode, downKeyCode]
-
-    // Update the cursor position in the display
-    if (arrowKeyCodes.includes(keyCode)) {
-      const newCursorPos = [...initialCursorPos]
-
-      newCursorPos[nextSelectionStart] = true
-
-      setCursorPos(newCursorPos)
-    }
+    setDuration(newValue)
   }
 
   function handleBlur(e) {
     setIsOnFocus(false)
-    setCursorPos(initialCursorPos)
+    setCursor(false)
   }
 
   return (
@@ -97,7 +57,6 @@ const InputDuration = () => {
       <div>
         <DigitDuration 
           value={duration[duration.length - 3]} 
-          cursor={cursorPos[duration.length - 2]}
         />
         <span 
           className={`
@@ -110,11 +69,10 @@ const InputDuration = () => {
 
         <DigitDuration 
           value={duration[duration.length - 2]}
-          cursor={cursorPos[duration.length - 1]}
         />
         <DigitDuration 
           value={duration[duration.length - 1]} 
-          cursor={cursorPos[duration.length]}
+          cursor={cursor}
         />
         <span 
           className={`

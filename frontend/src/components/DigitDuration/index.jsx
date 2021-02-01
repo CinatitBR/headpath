@@ -3,9 +3,9 @@ const DigitDuration = ({ value, cursor }) => {
     <span 
       className={`
         digit 
-        ${!value && 'unsure'}
-        ${cursor && 'cursor'}
-      `} 
+        ${value ? '' : 'unsure'} 
+        ${cursor ? 'cursor' : ''}
+      `}
       tabIndex="0"
     >
       { value ? value : '0' }
