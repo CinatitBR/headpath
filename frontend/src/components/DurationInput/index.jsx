@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import DigitDuration from '../DigitDuration'
+import DurationDigit from '../DurationDigit'
 
 import './style.css'
 
@@ -45,7 +45,7 @@ const DurationInput = ({ value, onChange, error }) => {
         Duração
 
         <div className={`duration-display ${isFieldOnFocus ? 'focus' : ''}`}>
-          <DigitDuration 
+          <DurationDigit 
             value={value[value.length - 3]} 
           />
           <span 
@@ -57,10 +57,10 @@ const DurationInput = ({ value, onChange, error }) => {
             h
           </span>
 
-          <DigitDuration 
+          <DurationDigit 
             value={value[value.length - 2]}
           />
-          <DigitDuration 
+          <DurationDigit 
             value={value[value.length - 1]} 
             cursor={cursor}
           />

@@ -1,4 +1,4 @@
-const DigitDuration = ({ value, cursor }) => {
+const DurationDigit = ({ value, cursor }) => {
   return (
     <span 
       className={`
@@ -13,4 +13,4 @@ const DigitDuration = ({ value, cursor }) => {
   )
 }
 
-export default DigitDuration
+export default DurationDigit
