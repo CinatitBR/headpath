@@ -4,7 +4,7 @@ import Header from './components/Header'
 import Menu from './components/Menu'
 import SubjectList from './components/SubjectList'
 import Modal from './components/Modal'
-import FormSubject from './components/FormSubject'
+import SubjectForm from './components/SubjectForm'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -40,7 +40,7 @@ function App() {
         </div>
 
         <div className="modal-body">
-          <FormSubject />
+          <SubjectForm />
         </div>
       </Modal>
     </>

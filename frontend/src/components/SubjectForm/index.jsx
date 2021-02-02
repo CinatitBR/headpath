@@ -38,7 +38,7 @@ function useValidator() {
   return validator
 }
 
-const FormSubject = () => {
+const SubjectForm = () => {
   const initialValues = {
     subject: '',
     duration: ''
@@ -182,4 +182,4 @@ const FormSubject = () => {
   )
 }
 
-export default FormSubject
+export default SubjectForm
