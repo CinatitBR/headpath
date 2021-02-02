@@ -44,16 +44,19 @@ const FormSubject = () => {
   }
 
   const [values, setValues] = useState(initialValues)
+
   const [showButton, setShowButton] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   const [success, setSuccess] = useState({})
   const [errors, setErrors] = useState({subject: null, duration: null}) 
-
   const [fieldsTouched, setFieldsTouched] = 
     useState({subject: false, duration: false})
 
   const validator = useValidator()
+
+  const areAllFieldsTouched = fieldsTouched.subject && fieldsTouched.duration
+  const errorsExist = errors.subject || errors.duration
 
   async function postSubject() {
     const data = {
@@ -141,14 +144,18 @@ const FormSubject = () => {
   }
 
   useEffect(() => {
-    console.log(!errors.subject && !errors.duration)
-    if (fieldsTouched.subject && fieldsTouched.duration) {
-      if (!errors.subject && !errors.duration) {
-        setShowButton(true)
-      }
-      else {
-        setShowButton(false)
-      }
+    // Check if all fields were touched
+    if (areAllFieldsTouched) {
+      // Check if there are errors
+      errorsExist ? 
+        setShowButton(false) 
+        : setShowButton(true)
+      // if (errorsExist) {
+      //   setShowButton(true)
+      // }
+      // else {
+      //   setShowButton(false)
+      // }
     }
   }, [errors, fieldsTouched])
 
