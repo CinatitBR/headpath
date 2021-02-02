@@ -3,6 +3,7 @@
   border-bottom: 2px solid var(--brand-color);
   padding-bottom: 2px;
   cursor: pointer;
+  user-select: none;
 }
 
 .input-duration .digit {

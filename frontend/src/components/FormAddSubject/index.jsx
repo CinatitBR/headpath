@@ -11,7 +11,8 @@ const FormAddSubject = () => {
   }
 
   const [values, setValues] = useState(initialValues)
-  const [isLoaded, setIsLoaded] = useState(true)
+  const [showButton, setShowButton] = useState(false)
+  const [isLoading, setLoading] = useState(false)
 
   const [success, setSuccess] = useState({})
   const [errors, setErrors] = useState({}) 
@@ -40,7 +41,8 @@ const FormAddSubject = () => {
       setErrors(feedback)
     }
 
-    setIsLoaded(true)
+    setShowButton(true)
+    setLoading(false)
   }
 
   function handleInputChange(e) {
@@ -83,14 +85,14 @@ const FormAddSubject = () => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    setIsLoaded(false)
+    setShowButton(false)
+    setLoading(true)
 
     postSubject()
   }
 
   return (
     <form onSubmit={handleSubmit}>
-
       <div className="success">
         {success.ok && 
           success.ok  
@@ -138,9 +140,9 @@ const FormAddSubject = () => {
 
       <button 
         type="submit"
-        disabled={!isLoaded}
+        disabled={!showButton}
       >
-        Adicionar
+        {isLoading ? 'Adicionando' : 'Adicionar'}
       </button>
     </form>
   )
