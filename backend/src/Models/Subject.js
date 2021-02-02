@@ -1,4 +1,4 @@
-import db from '../db.js'
+import db from '../services/db.js'
 
 const error = 'Houve um erro. Por favor, tente novamente.'
 
