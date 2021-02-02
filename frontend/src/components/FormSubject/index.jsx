@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+import TextInput from '../TextInput'
 import InputDuration from '../InputDuration'
 
 import './style.css'
@@ -144,25 +145,14 @@ const FormSubject = () => {
       </div>
 
       <div className="fields">
-        <div className="field">
-          <label>
-            Nome da matéria
-          
-            <input 
-              type="text"
-              name="subject"
-              value={values.subject} 
-              onChange={handleInputChange} 
-              autoFocus 
-            />  
-          </label>
-
-          <div className="error">
-            {errors.subject &&
-              errors.subject
-            }
-          </div>
-        </div>
+        <TextInput
+          label="Nome da matéria"
+          name="subject"
+          value={values.subject}
+          onChange={handleInputChange}
+          autoFocus={true}
+          error={errors.subject}
+        />
       
         <div className="field">
           <label>
