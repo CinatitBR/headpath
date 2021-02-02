@@ -1,8 +1,41 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import InputDuration from '../InputDuration'
 
 import './style.css'
+
+function useValidator() {
+  const subjectValidation = subject => {
+    if (subject.trim() === '') {
+      return 'Por favor, digite o nome da matéria'
+    }
+    if (subject.length > 50) {
+      return 'O nome da matéria pode ter no máximo 50 caracteres'
+    }
+
+    return null
+  }
+
+  const durationValidation = duration => {
+    const allowedFormat = /^\d{1,4}$/
+
+    if (duration.trim() === '') {
+      return 'Por favor, digite a duração da matéria'
+    }
+    if (!allowedFormat.test(duration)) {
+      return 'A duração é inválida'
+    }
+
+    return null
+  }
+
+  const validator = {
+    subject: subjectValidation, 
+    duration: durationValidation
+  }
+
+  return validator
+}
 
 const FormSubject = () => {
   const initialValues = {
@@ -12,10 +45,15 @@ const FormSubject = () => {
 
   const [values, setValues] = useState(initialValues)
   const [showButton, setShowButton] = useState(false)
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const [success, setSuccess] = useState({})
-  const [errors, setErrors] = useState({}) 
+  const [errors, setErrors] = useState({subject: null, duration: null}) 
+
+  const [fieldsTouched, setFieldsTouched] = 
+    useState({subject: false, duration: false})
+
+  const validator = useValidator()
 
   async function postSubject() {
     const data = {
@@ -42,29 +80,28 @@ const FormSubject = () => {
     }
 
     setShowButton(true)
-    setLoading(false)
+    setIsLoading(false)
   }
 
   function handleInputChange(e) {
     const { name, value } = e.target
 
-    // if (name === 'duration') {
-    //   if (value.toString().length > 4) {
-    //     const strValue = value.toString()
-    //     const newValue = strValue.substring(1)
-        
-    //     setValues({
-    //       ...values,
-    //       [name]: newValue
-    //     })
-    //   }
-
-    //   return
-    // }
-
+    // Set new value
     setValues({
       ...values,
       [name]: value
+    })
+    
+    // Check for new error
+    setErrors({
+      ...errors,
+      [name]: validator[name](value)
+    })
+
+    // Set field as touched
+    setFieldsTouched({
+      ...fieldsTouched,
+      [name]: true
     })
   }
 
@@ -81,15 +118,39 @@ const FormSubject = () => {
       ...values,
       duration: newValue
     })
+
+    // Check for new error
+    setErrors({
+      ...errors,
+      duration: validator.duration(newValue)
+    })
+
+    // Set field as touched
+    setFieldsTouched({
+      ...fieldsTouched,
+      duration: true
+    })
   }
 
   function handleSubmit(e) {
     e.preventDefault()
     setShowButton(false)
-    setLoading(true)
+    setIsLoading(true)
 
     postSubject()
   }
+
+  useEffect(() => {
+    console.log(!errors.subject && !errors.duration)
+    if (fieldsTouched.subject && fieldsTouched.duration) {
+      if (!errors.subject && !errors.duration) {
+        setShowButton(true)
+      }
+      else {
+        setShowButton(false)
+      }
+    }
+  }, [errors, fieldsTouched])
 
   return (
     <form onSubmit={handleSubmit}>
