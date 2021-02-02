@@ -4,7 +4,7 @@ import InputDuration from '../InputDuration/'
 
 import './style.css'
 
-const FormAddSubject = () => {
+const FormSubject = () => {
   const initialValues = {
     subject: '',
     duration: ''
@@ -148,4 +148,4 @@ const FormAddSubject = () => {
   )
 }
 
-export default FormAddSubject
+export default FormSubject
