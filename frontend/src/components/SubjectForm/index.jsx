@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import TextInput from '../TextInput'
-import InputDuration from '../InputDuration'
+import DurationInput from '../DurationInput'
 
 import './style.css'
 
@@ -153,23 +153,12 @@ const SubjectForm = () => {
           autoFocus={true}
           error={errors.subject}
         />
-      
-        <div className="field">
-          <label>
-            Duração
 
-            <InputDuration 
-              duration={values.duration} 
-              onChange={handleInputChange}
-            />
-          </label>
-
-          <div className="error">
-            {errors.duration &&
-              errors.duration
-            }
-          </div>
-        </div>
+        <DurationInput 
+          value={values.duration}
+          onChange={handleInputChange}
+          error={errors.duration}
+        /> 
       </div>
 
       <button 

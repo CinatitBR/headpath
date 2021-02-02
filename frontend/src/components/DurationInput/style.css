@@ -1,12 +1,12 @@
-.input-duration {
+.duration-display {
+  cursor: pointer;
   position: relative;
   border-bottom: 2px solid var(--brand-color);
   padding-bottom: 2px;
-  cursor: pointer;
   user-select: none;
 }
 
-.input-duration .digit {
+.duration-display .digit {
   outline: none;
   border-right: 1px solid transparent;
   font-size: 23px;
@@ -14,25 +14,25 @@
   font-weight: 500;
 }
 
-.input-duration .digit.cursor {
+.duration-display .digit.cursor {
   border-right: 1px solid var(--black);
 }
 
-.input-duration .symbol {
+.duration-display .symbol {
   color: var(--black);
   font-size: 18px;
   padding-right: 10px;
 }
 
-.input-duration .unsure {
+.duration-display .unsure {
   color: #646464;
 }
 
-.input-duration.focus {
+.duration-display .focus {
   cursor: default;
 }
 
-.input-duration input {
+.duration-input input {
   position: absolute;
   height: 0px;
   width: 0px;
