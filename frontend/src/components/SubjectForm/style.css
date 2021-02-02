@@ -5,27 +5,12 @@ form  {
   flex-direction: column;
 }
 
-form .success {
-  font-size: 20px;
-  margin-top: 10px;
-  font-weight: 700;
-  color: var(--blue);
-}
-
 form .field {
-  margin-top: 10px;
-}
-
-form .error {
-  color: #a4363c;
-  margin-top: 2px;
-}
-
-form .field label {
+  margin-top: 20px;
   font-size: 16px;
 }
 
-form .field label input {
+form .field input {
   display: block;
   width: 500px;
   max-width: 250px;
@@ -55,4 +40,16 @@ form button {
 form button:disabled {
   opacity: 0.8;
   cursor: default;
+}
+
+form .success {
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+form .error {
+  color: #a4363c;
+  margin-top: 2px;
 }
