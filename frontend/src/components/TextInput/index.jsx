@@ -1,4 +1,4 @@
-const TextInput = ({ label, name, value, onChange, onBlur, autoFocus=false, error }) => {
+const TextInput = ({ label, name, value, onChange, autoFocus=false, error }) => {
   return (
     <div className="field">
       <label>
@@ -9,7 +9,6 @@ const TextInput = ({ label, name, value, onChange, onBlur, autoFocus=false, erro
           name={name}
           value={value} 
           onChange={onChange} 
-          onBlur={onBlur}
           autoFocus={autoFocus}
         />  
       </label>

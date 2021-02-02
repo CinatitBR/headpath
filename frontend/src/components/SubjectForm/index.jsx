@@ -102,42 +102,19 @@ const SubjectForm = () => {
       [name]: newValue
     })
 
+    // Check for new error
     const newError = validator[name](value)
 
-    // If there is no error, clean the error field
-    if (!newError) {
-      setErrors({
-        ...errors,
-        [name]: newError
-      })
-    }
+    // Set new error
+    setErrors({
+      ...errors,
+      [name]: newError
+    })
 
     // Set field as touched
     setFieldsTouched({
       ...fieldsTouched,
       [name]: true
-    })
-  }
-
-  function handleInputBlur(e) {
-    const { target, relatedTarget } = e
-    const { name, value } = target
-
-    // Check if modal was clicked
-    const modalGainedFocus = relatedTarget ? 
-      relatedTarget.id === 'modal' : 
-      false
-
-    // If modal was not clicked
-    if (!modalGainedFocus) return
-
-    // If field has not been touched
-    if (!fieldsTouched[name]) return
-
-    // Check for new error
-    setErrors({
-      ...errors,
-      [name]: validator[name](value)
     })
   }
 
@@ -176,7 +153,6 @@ const SubjectForm = () => {
           name="subject"
           value={values.subject}
           onChange={handleInputChange}
-          onBlur={handleInputBlur}
           autoFocus={true}
           error={errors.subject}
         />
@@ -184,7 +160,6 @@ const SubjectForm = () => {
         <DurationInput 
           value={values.duration}
           onChange={handleInputChange}
-          onBlur={handleInputBlur}
           error={errors.duration}
         /> 
       </div>

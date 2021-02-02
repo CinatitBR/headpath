@@ -4,7 +4,7 @@ import DurationDigit from '../DurationDigit'
 
 import './style.css'
 
-const DurationInput = ({ value, onChange, onBlur, error }) => {
+const DurationInput = ({ value, onChange, error }) => {
   const [isFieldOnFocus, setIsFieldOnFocus] = useState(false)
   const [cursor, setCursor] = useState(false)
 
@@ -32,13 +32,11 @@ const DurationInput = ({ value, onChange, onBlur, error }) => {
     }
   }
 
-  function handleBlur(e) {
+  function handleBlur() {
     setIsFieldOnFocus(false)
     setCursor(false)
-
-    onBlur(e)
   }
-
+  
   return (
     <div 
       className={`field duration-input`}
