@@ -55,9 +55,6 @@ const FormSubject = () => {
 
   const validator = useValidator()
 
-  const areAllFieldsTouched = fieldsTouched.subject && fieldsTouched.duration
-  const errorsExist = errors.subject || errors.duration
-
   async function postSubject() {
     const data = {
       subject: values.subject, 
@@ -89,49 +86,31 @@ const FormSubject = () => {
   function handleInputChange(e) {
     const { name, value } = e.target
 
+    let newValue = value
+
+    // Limits value length to 3 digits 
+    if (name === 'duration' 
+      && value.length > 3
+    ) {
+      newValue = value.substring(1)
+    }
+
     // Set new value
     setValues({
       ...values,
-      [name]: value
+      [name]: newValue
     })
     
     // Check for new error
     setErrors({
       ...errors,
-      [name]: validator[name](value)
+      [name]: validator[name](newValue)
     })
 
     // Set field as touched
     setFieldsTouched({
       ...fieldsTouched,
       [name]: true
-    })
-  }
-
-  function handleDurationChange(e) {
-    const { value } = e.target
-
-    let newValue = value
-  
-    if (value.length > 3) {
-      newValue = value.substring(1)
-    }
-
-    setValues({
-      ...values,
-      duration: newValue
-    })
-
-    // Check for new error
-    setErrors({
-      ...errors,
-      duration: validator.duration(newValue)
-    })
-
-    // Set field as touched
-    setFieldsTouched({
-      ...fieldsTouched,
-      duration: true
     })
   }
 
@@ -144,18 +123,15 @@ const FormSubject = () => {
   }
 
   useEffect(() => {
+    const areAllFieldsTouched = fieldsTouched.subject && fieldsTouched.duration
+    const errorsExist = errors.subject || errors.duration
+
     // Check if all fields were touched
     if (areAllFieldsTouched) {
       // Check if there are errors
       errorsExist ? 
         setShowButton(false) 
         : setShowButton(true)
-      // if (errorsExist) {
-      //   setShowButton(true)
-      // }
-      // else {
-      //   setShowButton(false)
-      // }
     }
   }, [errors, fieldsTouched])
 
@@ -194,7 +170,7 @@ const FormSubject = () => {
 
             <InputDuration 
               duration={values.duration} 
-              onChange={handleDurationChange}
+              onChange={handleInputChange}
             />
           </label>
 
