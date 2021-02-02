@@ -28,7 +28,7 @@ const Modal = ({ show, onClose, children }) => {
       className="modal-overlay" 
       onClick={onClose}
     >
-      <div className="modal" onClick={handlePropagation}>
+      <div className="modal" id="modal" tabIndex="0" onClick={handlePropagation}>
         {children}
       </div>
     </div>
