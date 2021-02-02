@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import InputDuration from '../InputDuration/'
+import InputDuration from '../InputDuration'
 
 import './style.css'
 

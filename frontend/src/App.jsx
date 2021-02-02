@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
-import Header from './components/Header/'
-import Menu from './components/Menu/'
-import SubjectList from './components/SubjectList/'
-import Modal from './components/Modal/'
-import FormSubject from './components/FormSubject/'
+import Header from './components/Header'
+import Menu from './components/Menu'
+import SubjectList from './components/SubjectList'
+import Modal from './components/Modal'
+import FormSubject from './components/FormSubject'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'

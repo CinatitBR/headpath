@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import DigitDuration from '../DigitDuration/'
+import DigitDuration from '../DigitDuration'
 
 import './style.css'
 
