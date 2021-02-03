@@ -1,4 +1,4 @@
-import timeHelper from './timeHelper.js'
+// import timeHelper from './timeHelper.js'
 
 const subjectValidation = async ({ subject, SubjectModel }) => {
   if (typeof subject !== 'string') {
@@ -27,21 +27,22 @@ const durationValidation = ({ duration }) => {
     return 'Por favor, digite a duração da matéria'
   }
 
-  // Format: 'xx:xx:00'
-  const format = /^\d{2}:\d{2}:00$/
+  const initialFormat = /^\d{2}:[0-5][0-9]:[0-5][0-9]$/
 
-  if (!format.test(duration)) {
-    return 'A duração é inválida'
+  if (!initialFormat.test(duration)) {
+    return 'A duração é inválida' 
   }
 
-  const minSeconds = 60 // 1 minute
-  const maxSeconds = 21600 // 6 hours
-  const durationSeconds = timeHelper.toSeconds(duration)
+  const seconds = parseInt(duration.split(':')[2])
+  
+  if (seconds !== 0) {
+    return 'A duração não pode conter segundos'
+  }
 
   // Duration must have at least 1 minute and at most 6 hours
-  if (durationSeconds < minSeconds 
-    || durationSeconds > maxSeconds
-  ) {
+  const finalFormat = /^0([0-5]:[0-5][1-9]|6:00):00$/
+
+  if (!finalFormat.test(duration)) {
     return 'A duração precisa ter no minimo 1 minuto e no máximo 6 horas'
   }
 
