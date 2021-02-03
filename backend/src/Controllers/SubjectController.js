@@ -1,5 +1,7 @@
 import Subject from '../Models/Subject.js'
 
+import timeHelper from '../services/timeHelper.js'
+
 const SubjectController = {
   index: async (req, res, next) => {
     try {
@@ -36,6 +38,10 @@ const SubjectController = {
       // Duration validation
       const durationFormat = /^\d{2}:\d{2}:\d{2}$/
 
+      const minSeconds = 60
+      const maxSeconds = 21600
+      const durationSeconds = timeHelper.toSeconds(duration)
+
       if (duration.trim().length === 0) {
         errors.duration = 'Por favor, digite a duração da matéria'
       }
@@ -43,7 +49,11 @@ const SubjectController = {
         errors.duration = 'A duração é inválida'
       }
       // Duration must have at least 1 minute and at most 6 hours
-      else if ()
+      else if (durationSeconds < minSeconds 
+        || durationSeconds > maxSeconds
+      ) {
+        errors.duration = 'A duração precisa ter no minimo 1 minuto e no máximo 6 horas'
+      }
 
       const errorsExist = errors.subject || errors.duration
 
@@ -54,8 +64,11 @@ const SubjectController = {
           .json(errors)
       }
 
+      // Formats duration so that minutes and seconds have 59 units at most
+      const formatedDuration = timeHelper.formatTime(duration)
+
       // Create Subject
-      await Subject.create({ subject, duration })
+      await Subject.create({ subject: subject, duration: formatedDuration })
 
       return res
         .status(201)
