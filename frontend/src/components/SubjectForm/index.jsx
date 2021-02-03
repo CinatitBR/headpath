@@ -14,46 +14,16 @@ const SubjectForm = () => {
   }
 
   const [values, setValues] = useState(initialValues)
+  const [success, setSuccess] = useState({})
+  const [errors, setErrors] = useState({}) 
 
   const [showButton, setShowButton] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  const [success, setSuccess] = useState({})
-  const [errors, setErrors] = useState({subject: null, duration: null}) 
-  const [fieldsTouched, setFieldsTouched] = 
-    useState({subject: false, duration: false})
-
+  const [fieldsTouched, setFieldsTouched] = useState({})
   const validator = useValidator()
 
-  async function postSubject() {
-    const data = {
-      subject: values.subject, 
-      duration: values.duration
-    }
-
-    const response = await fetch('/subjects/create', { 
-      headers: {
-        'Content-Type': 'application/json'
-      }, 
-      method: 'POST',
-      body: JSON.stringify(data)
-    })
-
-    const feedback = await response.json()
-
-    if (response.ok) {
-      setSuccess(feedback)
-      setValues(initialValues)
-    } 
-    else {
-      setErrors(feedback)
-    }
-
-    setShowButton(true)
-    setIsLoading(false)
-  }
-
-  function handleInputChange(e) {
+  const handleInputChange = (e) => {
     const { name, value } = e.target
 
     let newValue = value
@@ -87,11 +57,40 @@ const SubjectForm = () => {
     })
   }
 
-  function handleSubmit(e) {
+  const postSubject = async () => {
+    const data = {
+      subject: values.subject, 
+      duration: values.duration
+    }
+
+    const response = await fetch('/subjects/create', { 
+      headers: {
+        'Content-Type': 'application/json'
+      }, 
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+
+    const feedback = await response.json()
+
+    // If request was successful
+    if (response.ok) {
+      setSuccess(feedback)
+      setValues(initialValues)
+    } 
+    else {
+      setErrors(feedback)
+    }
+
+    setShowButton(true)
+    setIsLoading(false)
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault()
+
     setShowButton(false)
     setIsLoading(true)
-
     postSubject()
   }
 
