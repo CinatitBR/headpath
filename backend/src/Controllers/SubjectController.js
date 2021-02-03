@@ -20,24 +20,35 @@ const SubjectController = {
         duration: null
       }
 
-      // Check if value exists
-      if (!subject) {
-        errors.subject = 'Por favor, preencha o campo corretamente'
+      // Subject validation
+      if (subject.trim().length === 0) {
+        errors.subject = 'Por favor, digite o nome da matéria'
+      }
+      else if (subject.length > 50) {
+        errors.subject = 'O nome da matéria pode ter no máximo 50 caracteres'
+      }
+      else {
+        const subjectExists = await Subject.findOne({ subject })
+
+        if (subjectExists) errors.subject = 'Essa matéria já existe'
       }
 
-      if (!duration) {
-        errors.duration = 'Por favor, preencha o campo corretamente'
-      }
+      // Duration validation
+      const durationFormat = /^\d{2}:\d{2}:\d{2}$/
 
-      const subjectExists = await Subject.findOne({ subject })
-
-      // Check if subject already exists
-      if (subjectExists) {
-        errors.subject = 'Essa matéria já existe'
+      if (duration.trim().length === 0) {
+        errors.duration = 'Por favor, digite a duração da matéria'
       }
+      else if (!durationFormat.test(duration)) {
+        errors.duration = 'A duração é inválida'
+      }
+      // Duration must have at least 1 minute and at most 6 hours
+      else if ()
+
+      const errorsExist = errors.subject || errors.duration
 
       // If there is any error
-      if (errors.subject || errors.duration) {
+      if (errorsExist) {
         return res
           .status(400)
           .json(errors)

@@ -39,9 +39,7 @@ const Subject = {
     `
 
     try {
-      const [results, fields] = await db.query(sql, [subject, duration])
-
-      return results
+      await db.query(sql, [subject, duration])
     }
     catch (err) {
       throw new Error(err)

@@ -18,13 +18,13 @@ function useValidator() {
   }
 
   const durationValidation = duration => {
-    const allowedFormat = /^\d{1,4}$/
+    const allowedFormat = /^\d{1,3}$/
 
     if (duration.trim() === '') {
       return 'Por favor, digite a duração da matéria'
     }
     if (!allowedFormat.test(duration)) {
-      return 'A duração é inválida'
+      return 'A duração tem um formato inválido'
     }
 
     return null
