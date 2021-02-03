@@ -1,5 +1,6 @@
-import Subject from '../Models/Subject.js'
+import SubjectModel from '../Models/SubjectModel.js'
 
+import validator from '../services/validator.js'
 import timeHelper from '../services/timeHelper.js'
 
 const SubjectController = {
@@ -22,18 +23,20 @@ const SubjectController = {
         duration: null
       }
 
-      // Subject validation
-      if (subject.trim().length === 0) {
-        errors.subject = 'Por favor, digite o nome da matéria'
-      }
-      else if (subject.length > 50) {
-        errors.subject = 'O nome da matéria pode ter no máximo 50 caracteres'
-      }
-      else {
-        const subjectExists = await Subject.findOne({ subject })
+      errors.subject = await validator.subject({ subject, SubjectModel })
 
-        if (subjectExists) errors.subject = 'Essa matéria já existe'
-      }
+      // Subject validation
+      // if (subject.trim().length === 0) {
+      //   errors.subject = 'Por favor, digite o nome da matéria'
+      // }
+      // else if (subject.length > 50) {
+      //   errors.subject = 'O nome da matéria pode ter no máximo 50 caracteres'
+      // }
+      // else {
+      //   const subjectExists = await Subject.findOne({ subject })
+
+      //   if (subjectExists) errors.subject = 'Essa matéria já existe'
+      // }
 
       // Duration validation
       const durationFormat = /^\d{2}:\d{2}:\d{2}$/

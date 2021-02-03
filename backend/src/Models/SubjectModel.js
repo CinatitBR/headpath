@@ -2,7 +2,7 @@ import db from '../services/db.js'
 
 const error = 'Houve um erro. Por favor, tente novamente.'
 
-const Subject = {
+const SubjectModel = {
   findAll: async () => {
     const sql = 'SELECT * FROM `subject`'
 
@@ -47,4 +47,4 @@ const Subject = {
   }
 }
 
-export default Subject
+export default SubjectModel
