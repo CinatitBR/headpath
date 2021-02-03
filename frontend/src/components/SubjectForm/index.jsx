@@ -43,7 +43,7 @@ const SubjectForm = () => {
     })
 
     // Check for new error
-    const newError = validator[name](value)
+    const newError = validator[name](newValue)
 
     // Set new error
     setErrors({
