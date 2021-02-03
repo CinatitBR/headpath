@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-
 import useValidator from '../../hooks/useValidator'
+
+import formatDuration from '../../services/formatDuration.js'
 
 import TextInput from '../TextInput'
 import DurationInput from '../DurationInput'
@@ -58,9 +59,11 @@ const SubjectForm = () => {
   }
 
   const postSubject = async () => {
+    const formatedDuration = formatDuration(values.duration)
+
     const data = {
       subject: values.subject, 
-      duration: values.duration
+      duration: formatedDuration
     }
 
     const response = await fetch('/subjects/create', { 
@@ -110,8 +113,8 @@ const SubjectForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="success">
-        {success.ok && 
-          success.ok  
+        {success.feedback && 
+          success.feedback  
         }
       </div>
 
