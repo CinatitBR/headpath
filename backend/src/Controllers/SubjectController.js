@@ -17,48 +17,21 @@ const SubjectController = {
     try {
       const { subject, duration } = req.body
 
-      const success = { ok: 'Matéria adicionada com sucesso!' }
+      const success = { 
+        status: 'ok', 
+        feedback: 'Matéria adicionada com sucesso!' 
+      }
+
       const errors = {
+        status: 'error',
         subject: null,
         duration: null
       }
 
       errors.subject = await validator.subject({ subject, SubjectModel })
+      errors.duration = validator.duration({ duration })
 
-      // Subject validation
-      // if (subject.trim().length === 0) {
-      //   errors.subject = 'Por favor, digite o nome da matéria'
-      // }
-      // else if (subject.length > 50) {
-      //   errors.subject = 'O nome da matéria pode ter no máximo 50 caracteres'
-      // }
-      // else {
-      //   const subjectExists = await Subject.findOne({ subject })
-
-      //   if (subjectExists) errors.subject = 'Essa matéria já existe'
-      // }
-
-      // Duration validation
-      const durationFormat = /^\d{2}:\d{2}:\d{2}$/
-
-      const minSeconds = 60
-      const maxSeconds = 21600
-      const durationSeconds = timeHelper.toSeconds(duration)
-
-      if (duration.trim().length === 0) {
-        errors.duration = 'Por favor, digite a duração da matéria'
-      }
-      else if (!durationFormat.test(duration)) {
-        errors.duration = 'A duração é inválida'
-      }
-      // Duration must have at least 1 minute and at most 6 hours
-      else if (durationSeconds < minSeconds 
-        || durationSeconds > maxSeconds
-      ) {
-        errors.duration = 'A duração precisa ter no minimo 1 minuto e no máximo 6 horas'
-      }
-
-      const errorsExist = errors.subject || errors.duration
+      const errorsExist = (errors.subject || errors.duration)
 
       // If there is any error
       if (errorsExist) {
@@ -68,10 +41,13 @@ const SubjectController = {
       }
 
       // Formats duration so that minutes and seconds have 59 units at most
-      const formatedDuration = timeHelper.formatTime(duration)
+      const newDuration = timeHelper.formatTime(duration)
 
-      // Create Subject
-      await Subject.create({ subject: subject, duration: formatedDuration })
+      // Creates subject
+      await SubjectModel.create({ 
+        subject: subject, 
+        duration: newDuration 
+      })
 
       return res
         .status(201)
