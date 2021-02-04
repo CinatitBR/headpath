@@ -1,4 +1,4 @@
-export default function Subject({ subject, duration }) {
+const Subject = ({ subject, duration }) => {
   return (
     <div className="subject">
       {subject}
@@ -6,3 +6,5 @@ export default function Subject({ subject, duration }) {
     </div>
   )
 }
+
+export default Subject

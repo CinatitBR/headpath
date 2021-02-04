@@ -1,20 +1,25 @@
 import { useState } from 'react'
 
-import Header from './components/Header'
-import Menu from './components/Menu'
-import SubjectList from './components/SubjectList'
-import Modal from './components/Modal'
-import SubjectForm from './components/SubjectForm'
+import Header from '../components/Header'
+import Menu from '../components/Menu'
+import SubjectList from '../components/SubjectList'
+import Modal from '../components/Modal'
+import SubjectForm from '../components/SubjectForm'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-import './App.css'
+import './Home.css'
 
-function App() {
+const App = () => {
+  const [subjects, setSubjects] = useState([])
   const [showModal, setShowModal] = useState(false)
 
-  function handleModal() {
+  const getSubjects = () => {
+    
+  }
+
+  const handleModal = () => {
     setShowModal(!showModal)
   }
 
@@ -47,4 +52,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
