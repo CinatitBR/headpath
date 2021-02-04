@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import Header from '../components/Header'
 import Menu from '../components/Menu'
@@ -12,16 +12,23 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import './Home.css'
 
 const App = () => {
-  const [subjects, setSubjects] = useState([])
+  const [subjectItems, setSubjectItems] = useState([])
   const [showModal, setShowModal] = useState(false)
 
-  const getSubjects = () => {
-    
+  const getSubjects = async () => {
+    const response = await fetch('/subjects')
+    const subjectItems = await response.json()
+
+    setSubjectItems(subjectItems)
   }
 
   const handleModal = () => {
     setShowModal(!showModal)
   }
+
+  useEffect(() => {
+    getSubjects()
+  }, [])
 
   return (
     <>
@@ -32,7 +39,9 @@ const App = () => {
       <div className="next-subjects">
         <h2>Próximas matérias</h2>
 
-        <SubjectList />
+        <SubjectList 
+          subjectItems={subjectItems} 
+        />
       </div>
     
       <Modal show={showModal} onClose={handleModal}>
