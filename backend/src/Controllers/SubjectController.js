@@ -18,7 +18,7 @@ const create = async (req, res, next) => {
 
     const success = { 
       status: 'ok', 
-      feedback: 'Matéria adicionada com sucesso!' 
+      newSubject: {} 
     }
 
     const errors = {
@@ -39,15 +39,13 @@ const create = async (req, res, next) => {
         .json(errors)
     }
 
-    // Formats duration so that minutes and seconds have 59 units at most
-    const newDuration = timeHelper.formatTime(duration)
-
     // Creates subject
-    await SubjectModel.create({ 
-      subject: subject, 
-      duration: newDuration 
+    const newSubject = await SubjectModel.create({ 
+      subject, 
+      duration
     })
-
+    success.newSubject = newSubject
+    
     return res
       .status(201)
       .json(success)

@@ -36,7 +36,16 @@ const create = async ({ subject, duration }) => {
   `
 
   try {
-    await db.query(sql, [subject, duration])
+    const [results, fields] = await db.query(sql, [subject, duration])
+    const { insertId } = results
+
+    const newSubject = { 
+      subjectId: insertId, 
+      subject, 
+      duration 
+    }
+
+    return newSubject
   }
   catch (err) {
     throw new Error(err)
