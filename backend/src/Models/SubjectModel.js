@@ -40,7 +40,7 @@ const create = async ({ subject, duration }) => {
     const { insertId } = results
 
     const newSubject = { 
-      subjectId: insertId, 
+      subject_id: insertId, 
       subject, 
       duration 
     }

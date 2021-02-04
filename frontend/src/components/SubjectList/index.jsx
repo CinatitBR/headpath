@@ -1,9 +1,12 @@
 import Subject from '../Subject'
 
-const SubjectList = ({ subjectItems }) => {
+const SubjectList = ({ subjectItems, isLoading }) => {
   return (
     <div className="subjects">
       {
+        isLoading ?
+        <div>Carregando...</div> :
+
         subjectItems
           .map(({subject_id, subject, duration}) => 
             <Subject

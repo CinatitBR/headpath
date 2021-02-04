@@ -13,6 +13,7 @@ import './Home.css'
 
 const App = () => {
   const [subjectItems, setSubjectItems] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
 
   const getSubjects = async () => {
@@ -20,10 +21,15 @@ const App = () => {
     const subjectItems = await response.json()
 
     setSubjectItems(subjectItems)
+    setIsLoading(false)
   }
 
   const handleModal = () => {
     setShowModal(!showModal)
+  }
+
+  const handleSubjectCreated = (newSubject) => {
+    setSubjectItems([...subjectItems, newSubject])
   }
 
   useEffect(() => {
@@ -41,6 +47,7 @@ const App = () => {
 
         <SubjectList 
           subjectItems={subjectItems} 
+          isLoading={isLoading}
         />
       </div>
     
@@ -54,7 +61,9 @@ const App = () => {
         </div>
 
         <div className="modal-body">
-          <SubjectForm />
+          <SubjectForm 
+            onSubjectCreated={handleSubjectCreated} 
+          />
         </div>
       </Modal>
     </>

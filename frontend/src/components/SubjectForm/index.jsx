@@ -8,21 +8,23 @@ import DurationInput from '../DurationInput'
 
 import './style.css'
 
-const SubjectForm = () => {
+const SubjectForm = ({ onSubjectCreated }) => {
   const initialValues = {
     subject: '',
     duration: ''
   }
 
   const [values, setValues] = useState(initialValues)
-  const [success, setSuccess] = useState({})
   const [errors, setErrors] = useState({}) 
+  const [successMessage, setSuccessMessage] = useState(null)
+  const [fieldsTouched, setFieldsTouched] = useState({})
 
   const [showButton, setShowButton] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-
-  const [fieldsTouched, setFieldsTouched] = useState({})
   const validator = useValidator()
+
+  const areAllFieldsTouched = fieldsTouched.subject && fieldsTouched.duration
+  const errorsExist = errors.subject || errors.duration
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -60,7 +62,6 @@ const SubjectForm = () => {
 
   const postSubject = async () => {
     const formatedDuration = formatDuration(values.duration)
-
     const data = {
       subject: values.subject, 
       duration: formatedDuration
@@ -76,17 +77,19 @@ const SubjectForm = () => {
 
     const feedback = await response.json()
 
-    // If request was successful
-    if (response.ok) {
-      setSuccess(feedback)
-      setValues(initialValues)
-    } 
-    else {
-      setErrors(feedback)
-    }
-
     setShowButton(true)
     setIsLoading(false)
+
+    // If request was not successful
+    if (!response.ok) {
+      setErrors(feedback)
+    } 
+
+    const { newSubject } = feedback
+
+    onSubjectCreated(newSubject)
+    setValues(initialValues)
+    setSuccessMessage('Matéria adicionada com sucesso 🥳🥳')
   }
 
   const handleSubmit = (e) => {
@@ -98,9 +101,6 @@ const SubjectForm = () => {
   }
 
   useEffect(() => {
-    const areAllFieldsTouched = fieldsTouched.subject && fieldsTouched.duration
-    const errorsExist = errors.subject || errors.duration
-
     // Check if all fields were touched
     if (areAllFieldsTouched) {
       // Check if there are errors
@@ -108,13 +108,13 @@ const SubjectForm = () => {
         setShowButton(false) 
         : setShowButton(true)
     }
-  }, [errors, fieldsTouched])
+  }, [errorsExist, areAllFieldsTouched])
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="success">
-        {success.feedback && 
-          success.feedback  
+        {successMessage && 
+          successMessage 
         }
       </div>
 

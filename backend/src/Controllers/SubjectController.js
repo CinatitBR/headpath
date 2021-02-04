@@ -1,7 +1,6 @@
 import SubjectModel from '../Models/SubjectModel.js'
 
 import validator from '../services/validator.js'
-import timeHelper from '../services/timeHelper.js'
 
 const index = async (req, res, next) => {
   try {
@@ -45,7 +44,7 @@ const create = async (req, res, next) => {
       duration
     })
     success.newSubject = newSubject
-    
+
     return res
       .status(201)
       .json(success)
