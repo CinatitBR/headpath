@@ -30,23 +30,3 @@ button {
 input {
   font-family: inherit;
 }
-
-/* Next subjects */
-.next-subjects {
-  margin: 0 auto;
-  margin-top: 40px;
-  max-width: 300px;
-}
-
-.next-subjects h2 {
-  font-weight: 400;
-  font-size: 25px;
-  color: var(--brand-color);
-}
-
-.next-subjects .see-more {
-  margin-top: 10px;
-  margin-left: 10px;
-  font-size: 25px;
-  color: var(--brand-color);
-}

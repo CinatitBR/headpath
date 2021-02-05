@@ -7,6 +7,7 @@ import Modal from '../components/Modal'
 import SubjectForm from '../components/SubjectForm'
 
 import '../global.css'
+import style from './Home.module.css'
 
 const App = () => {
   const [subjectItems, setSubjectItems] = useState([])
@@ -44,7 +45,7 @@ const App = () => {
 
       <CurrentSubjectTimer />
 
-      <div className="next-subjects">
+      <section className={style.nextSubjects}>
         <h2>Próximas matérias</h2>
 
         <div style={{paddingLeft: '10px'}}>
@@ -54,7 +55,7 @@ const App = () => {
             error={error}
           />
         </div>
-      </div>
+      </section>
 
       <Modal 
         isOpen={isModalOpen}

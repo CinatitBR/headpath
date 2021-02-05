@@ -1,0 +1,18 @@
+.nextSubjects {
+  margin: 0 auto;
+  margin-top: 40px;
+  max-width: 300px;
+}
+
+.nextSubjects h2 {
+  font-weight: 400;
+  font-size: 25px;
+  color: var(--brand-color);
+}
+
+.nextSubjects .see-more {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 25px;
+  color: var(--brand-color);
+}
