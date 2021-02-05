@@ -1,0 +1,14 @@
+.TextInput input {
+  display: block;
+  width: 100%;
+
+  outline: none; 
+  border: none;
+  border-bottom: 2px solid var(--brand-color);
+  border-radius: 0px;
+  background: inherit;
+
+  font-size: 23px;
+  color: var(--black);
+  font-weight: 500;
+}

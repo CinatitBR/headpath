@@ -1,11 +1,11 @@
-form  {
+.SubjectForm  {
   width: fit-content;
 
   display: flex;
   flex-direction: column;
 }
 
-form .field {
+.SubjectForm .field {
   width: 500px;
   max-width: 250px;
   margin-top: 20px;
@@ -13,22 +13,7 @@ form .field {
   font-size: 16px;
 }
 
-form .field input {
-  display: block;
-  width: 100%;
-
-  outline: none; 
-  border: none;
-  border-bottom: 2px solid var(--brand-color);
-  border-radius: 0px;
-  background: inherit;
-
-  font-size: 23px;
-  color: var(--black);
-  font-weight: 500;
-}
-
-form button {
+.SubjectForm button {
   margin-top: 35px;
   border-radius: 5px;
   background: var(--blue);
@@ -39,12 +24,12 @@ form button {
   color: var(--white);
 }
 
-form button:disabled {
+.SubjectForm button:disabled {
   opacity: 0.8;
   cursor: default;
 }
 
-form .success {
+.SubjectForm .success {
   width: 100%;
   margin-top: 10px;
 
@@ -53,7 +38,7 @@ form .success {
   color: var(--blue);
 }
 
-form .error {
+.SubjectForm .error {
   width: 100%;
   color: #a4363c;
   margin-top: 2px;

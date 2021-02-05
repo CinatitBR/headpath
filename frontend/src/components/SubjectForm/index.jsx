@@ -6,7 +6,7 @@ import formatDuration from '../../services/formatDuration.js'
 import TextInput from '../TextInput'
 import DurationInput from '../DurationInput'
 
-import './style.css'
+import style from './style.module.css'
 
 const SubjectForm = ({ onSubjectCreated }) => {
   const initialValues = {
@@ -111,7 +111,7 @@ const SubjectForm = ({ onSubjectCreated }) => {
   }, [errorsExist, areAllFieldsTouched])
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={style.SubjectForm} onSubmit={handleSubmit}>
       <div className="success">
         {successMessage && 
           successMessage 
@@ -119,20 +119,24 @@ const SubjectForm = ({ onSubjectCreated }) => {
       </div>
 
       <div className="fields">
-        <TextInput
-          label="Nome da matéria"
-          name="subject"
-          value={values.subject}
-          onChange={handleInputChange}
-          autoFocus={true}
-          error={errors.subject}
-        />
+        <div className={style.field}>
+          <TextInput
+            label="Nome da matéria"
+            name="subject"
+            value={values.subject}
+            onChange={handleInputChange}
+            autoFocus={true}
+            error={errors.subject}
+          />
+        </div>
 
-        <DurationInput 
-          value={values.duration}
-          onChange={handleInputChange}
-          error={errors.duration}
-        /> 
+        <div className={style.field}>
+          <DurationInput 
+            value={values.duration}
+            onChange={handleInputChange}
+            error={errors.duration}
+          /> 
+        </div>
       </div>
 
       <button 

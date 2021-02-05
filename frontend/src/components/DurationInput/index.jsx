@@ -38,9 +38,7 @@ const DurationInput = ({ value, onChange, error }) => {
   }
   
   return (
-    <div 
-      className={`field ${style.durationInput}`}
-    >
+    <div className={style.durationInput}>
       <label>
         Duração
 

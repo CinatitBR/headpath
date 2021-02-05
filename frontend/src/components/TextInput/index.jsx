@@ -1,6 +1,8 @@
+import style from './style.module.css'
+
 const TextInput = ({ label, name, value, onChange, autoFocus=false, error }) => {
   return (
-    <div className="field">
+    <div className={style.TextInput}>
       <label>
         {label}
       
