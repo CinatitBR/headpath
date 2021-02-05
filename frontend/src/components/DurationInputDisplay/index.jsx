@@ -3,41 +3,29 @@ import DurationInputDigit from '../DurationInputDigit'
 import style from './style.module.css'
 
 const DurationInputDisplay = ({ duration, isInputOnFocus, cursor }) => {
+  const durationLength = duration.length
+
+  const hour = duration[durationLength - 3]
+  const minutes = duration.slice()
+
   return (
     <div
-      className={
-        style.durationInputDisplay + ' ' +
-        (isInputOnFocus ? style.focus : '')
-      } 
-      // className={`
-      //   durationInputDisplay 
-      //   ${isInputOnFocus ? 'focus' : ''}
-      // `}
+      className={`
+        ${style.durationInputDisplay}
+        ${isInputOnFocus ? style.focus : ''}
+      `} 
     >
-      <DurationInputDigit 
-        value={duration[duration.length - 3]} 
-      />
+      <DurationInputDigit value={hour} />
       <span 
-        className={`
-          ${style.symbol} 
-          ${!duration[duration.length - 3] ? style.unsure : ''}
-        `}
+        className={`${style.symbol} ${!hour ? style.unsure : ''}`}
       >
         h
       </span>
 
-      <DurationInputDigit 
-        value={duration[duration.length - 2]}
-      />
-      <DurationInputDigit 
-        value={duration[duration.length - 1]} 
-        cursor={cursor}
-      />
+      <DurationInputDigit value={minutes[1]} />
+      <DurationInputDigit value={minutes[0]} cursor={cursor} />
       <span 
-        className={`
-          ${style.symbol} 
-          ${!duration[duration.length - 1] ? style.unsure : ''}
-        `}
+        className={`${style.symbol} ${!minutes[0] ? style.unsure : ''}`}
       >
         m
       </span>

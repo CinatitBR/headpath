@@ -10,7 +10,7 @@ const DurationInputDigit = ({ value, cursor }) => {
       `}
       tabIndex="0"
     >
-      { value ? value : '0' }
+      {value ? value : '0'}
     </span>
   )
 }
