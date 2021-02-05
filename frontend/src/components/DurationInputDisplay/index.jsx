@@ -6,7 +6,10 @@ const DurationInputDisplay = ({ duration, isInputOnFocus, cursor }) => {
   const durationLength = duration.length
 
   const hour = duration[durationLength - 3]
-  const minutes = duration.slice()
+  const minutes = [
+    duration[durationLength - 1], 
+    duration[durationLength - 2]
+  ]
 
   return (
     <div
