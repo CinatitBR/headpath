@@ -6,23 +6,29 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import style from './style.module.css'
 
 const Modal = ({ isOpen, onClose, title, body }) => {
-  const scrollbarWidth = window.innerWidth - document.body.clientWidth
-
   const handlePropagation = (e) => {
     e.stopPropagation()
   }
-  
+
   useEffect(() => {
-    if (isOpen) {
+    const { clientWidth } = document.body
+    const { innerWidth } = window
+    const scrollbarWidth = innerWidth - clientWidth
+
+    const hideScrollbar = () => {
       document.body.style.overflowY = 'hidden'
       document.body.style.marginRight = `${scrollbarWidth}px`
     }
 
-    return () => { 
+    const showScrollbar = () => {
       document.body.style.overflowY = 'visible'
       document.body.style.marginRight = '0px'
     }
-  })
+
+    if (isOpen) hideScrollbar()
+
+    return showScrollbar
+  }, [isOpen])
 
   if (!isOpen) return null
 
