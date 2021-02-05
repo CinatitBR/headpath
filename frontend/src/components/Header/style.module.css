@@ -1,0 +1,30 @@
+header {
+  margin: 20px;
+  padding: 10px;
+
+  background: var(--white);
+  border-radius: 25px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  position: relative;
+}
+
+header .brandName {
+  position: absolute;
+
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--brand-color);
+  letter-spacing: 3px;
+}
+
+header .openModalIcon {
+  margin: 0 auto;
+
+  font-size: 35px;
+  color: var(--blue);
+}

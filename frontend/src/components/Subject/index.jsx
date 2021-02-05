@@ -1,9 +1,11 @@
+import style from './style.module.css'
+
 const Subject = ({ subject, duration }) => {
   return (
-    <div className="subject">
+    <div className={style.subject}>
       {subject}
 
-      <div className="duration">{duration}</div>
+      <div className={style.duration}>{duration}</div>
     </div>
   )
 }

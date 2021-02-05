@@ -1,0 +1,25 @@
+.subject {
+  margin-top: 5px;
+  width: fit-content;
+  background: var(--brand-color);
+  padding-left: 20px;
+  border-radius: 45px;
+  font-size: 18px;
+  color: var(--white);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.subject .duration {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 45px;
+  padding: 10px;
+  margin-left: 20px;
+
+  font-size: 15px;
+  font-weight: 500;
+}

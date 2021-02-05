@@ -1,16 +1,24 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-export default function Header({ onModalOpen }) {
+import style from './style.module.css'
+
+const Header = ({ onModalOpen }) => {
   return (
     <header>
-      <a href="#" className="brand-name">
+      <a href="#" className={style.brandName}>
         Headpath
       </a>
 
-      <button type="button" className="plus-icon" onClick={onModalOpen}>
+      <button
+        type="button" 
+        className={style.openModalIcon}
+        onClick={onModalOpen}
+      >
         <FontAwesomeIcon icon={faPlus}/>
       </button>
     </header>
   )
 }
+
+export default Header

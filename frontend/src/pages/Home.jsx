@@ -50,11 +50,13 @@ const App = () => {
       <div className="next-subjects">
         <h2>Próximas matérias</h2>
 
-        <SubjectList 
-          subjectItems={subjectItems} 
-          isLoading={isLoading}
-          error={error}
-        />
+        <div style={{paddingLeft: '10px'}}>
+          <SubjectList 
+            subjectItems={subjectItems} 
+            isLoading={isLoading}
+            error={error}
+          />
+        </div>
       </div>
     
       <Modal show={showModal} onClose={handleModal}>
