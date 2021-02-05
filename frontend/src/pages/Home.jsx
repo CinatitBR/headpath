@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import Header from '../components/Header'
-import Menu from '../components/Menu'
+import CurrentSubjectTimer from '../components/CurrentSubjectTimer'
 import SubjectList from '../components/SubjectList'
 import Modal from '../components/Modal'
 import SubjectForm from '../components/SubjectForm'
@@ -12,14 +12,19 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import './Home.css'
 
 const App = () => {
-  const [subjectItems, setSubjectItems] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [subjectItems, setSubjectItems] = useState([])
   const [showModal, setShowModal] = useState(false)
 
   const getSubjects = async () => {
     const response = await fetch('/subjects')
-    const subjectItems = await response.json()
 
+    if (!response.ok) {
+      setError('Houve um erro')
+    }
+
+    const subjectItems = await response.json()
     setSubjectItems(subjectItems)
     setIsLoading(false)
   }
@@ -40,7 +45,7 @@ const App = () => {
     <>
       <Header onModalOpen={handleModal} />
 
-      <Menu />
+      <CurrentSubjectTimer />
 
       <div className="next-subjects">
         <h2>Próximas matérias</h2>
@@ -48,6 +53,7 @@ const App = () => {
         <SubjectList 
           subjectItems={subjectItems} 
           isLoading={isLoading}
+          error={error}
         />
       </div>
     

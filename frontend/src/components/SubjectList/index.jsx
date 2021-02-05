@@ -1,12 +1,17 @@
 import Subject from '../Subject'
 
-const SubjectList = ({ subjectItems, isLoading }) => {
+const SubjectList = ({ subjectItems, isLoading, error }) => {
+
+  if (error) {
+    return <div>{error}</div>
+  }
+  if (isLoading) {
+    return <div>Carregando...</div>
+  }
+
   return (
     <div className="subjects">
       {
-        isLoading ?
-        <div>Carregando...</div> :
-
         subjectItems
           .map(({subject_id, subject, duration}) => 
             <Subject
