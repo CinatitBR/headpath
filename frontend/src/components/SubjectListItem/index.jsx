@@ -2,9 +2,9 @@ import style from './style.module.css'
 
 import SubjectDurationBox from '../SubjectDurationBox'
 
-const Subject = ({ subject, duration }) => {
+const SubjectListItem = ({ subject, duration }) => {
   return (
-    <div className={style.subject}>
+    <div className={style.subjectListItem}>
       {subject}
 
       <SubjectDurationBox duration={duration}/>
@@ -12,4 +12,4 @@ const Subject = ({ subject, duration }) => {
   )
 }
 
-export default Subject
+export default SubjectListItem
