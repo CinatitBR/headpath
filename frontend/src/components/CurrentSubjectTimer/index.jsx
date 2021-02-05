@@ -2,11 +2,11 @@ import TimerDisplay from '../TimerDisplay'
 import CurrentSubject from '../CurrentSubject'
 import TimerControls from '../TimerControls' 
 
-import './style.css'
+import style from './style.module.css'
 
 const CurrentSubjectTimer = () => {
   return (
-    <div className="current-subject-timer">
+    <div className={style.currentSubjectTimer}>
       <TimerDisplay />
 
       <CurrentSubject />

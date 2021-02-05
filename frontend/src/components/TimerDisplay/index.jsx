@@ -1,6 +1,8 @@
+import style from './style.module.css'
+
 const TimerDisplay = () => {
   return (
-    <div className="timer">
+    <div className={style.timerDisplay}>
       00:25:00
     </div>
   )

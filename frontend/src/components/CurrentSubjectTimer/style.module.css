@@ -1,0 +1,9 @@
+.currentSubjectTimer {
+  margin: 0 auto;
+  margin-top: 40px;
+  max-width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,5 @@
+.timerDisplay {
+  font-weight: 500;
+  color: var(--blue);
+  font-size: 50px;
+}
