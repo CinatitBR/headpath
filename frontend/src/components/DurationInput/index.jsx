@@ -4,7 +4,7 @@ import DurationInputDisplay from '../DurationInputDisplay'
 
 import style from './style.module.css'
 
-const DurationInput = ({ value, onChange, error }) => {
+const DurationInput = ({ value, onChange }) => {
   const [isInputOnFocus, setIsInputOnFocus] = useState(false)
   const [cursor, setCursor] = useState(false)
 
@@ -58,10 +58,6 @@ const DurationInput = ({ value, onChange, error }) => {
           onChange={onChange} 
         />
       </label>
-
-      <div className="error">
-        { error && error }
-      </div>
     </div>
   )
 }

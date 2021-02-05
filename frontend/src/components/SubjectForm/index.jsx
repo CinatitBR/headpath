@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import useValidator from '../../hooks/useValidator'
 
-import formatDuration from '../../services/formatDuration.js'
-
 import TextInput from '../TextInput'
 import DurationInput from '../DurationInput'
+import FieldError from '../FieldError'
+
+import formatDuration from '../../services/formatDuration.js'
 
 import style from './style.module.css'
 
@@ -126,16 +127,18 @@ const SubjectForm = ({ onSubjectCreated }) => {
             value={values.subject}
             onChange={handleInputChange}
             autoFocus={true}
-            error={errors.subject}
           />
+
+          <FieldError error={errors.subject} />
         </div>
 
         <div className={style.field}>
           <DurationInput 
             value={values.duration}
             onChange={handleInputChange}
-            error={errors.duration}
           /> 
+
+          <FieldError error={errors.duration} />
         </div>
       </div>
 

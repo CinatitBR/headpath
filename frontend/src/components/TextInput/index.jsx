@@ -1,6 +1,6 @@
 import style from './style.module.css'
 
-const TextInput = ({ label, name, value, onChange, autoFocus=false, error }) => {
+const TextInput = ({ label, name, value, onChange, autoFocus=false }) => {
   return (
     <div className={style.TextInput}>
       <label>
@@ -14,12 +14,6 @@ const TextInput = ({ label, name, value, onChange, autoFocus=false, error }) => 
           autoFocus={autoFocus}
         />  
       </label>
-
-      <div className="error">
-        {error &&
-          error
-        }
-      </div>
     </div>
   )
 }
