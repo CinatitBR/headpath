@@ -5,7 +5,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import style from './style.module.css'
 
-const Modal = ({ show, onClose, title, body }) => {
+const Modal = ({ isOpen, onClose, title, body }) => {
   const scrollbarWidth = window.innerWidth - document.body.clientWidth
 
   const handlePropagation = (e) => {
@@ -13,7 +13,7 @@ const Modal = ({ show, onClose, title, body }) => {
   }
   
   useEffect(() => {
-    if (show === true) {
+    if (isOpen) {
       document.body.style.overflowY = 'hidden'
       document.body.style.marginRight = `${scrollbarWidth}px`
     }
@@ -24,7 +24,7 @@ const Modal = ({ show, onClose, title, body }) => {
     }
   })
 
-  if (!show) return null
+  if (!isOpen) return null
 
   return (
     <div className={style.modalOverlay} onClick={onClose}>

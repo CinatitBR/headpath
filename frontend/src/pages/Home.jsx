@@ -12,7 +12,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [subjectItems, setSubjectItems] = useState([])
-  const [showModal, setShowModal] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const getSubjects = async () => {
     const response = await fetch('/subjects')
@@ -27,7 +27,7 @@ const App = () => {
   }
 
   const handleModal = () => {
-    setShowModal(!showModal)
+    setIsModalOpen(!isModalOpen)
   }
 
   const handleSubjectCreated = (newSubject) => {
@@ -57,7 +57,7 @@ const App = () => {
       </div>
 
       <Modal 
-        show={showModal}
+        isOpen={isModalOpen}
         onClose={handleModal}
         title="Adicionar matéria"
         body={

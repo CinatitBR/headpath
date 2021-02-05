@@ -12,6 +12,8 @@
 .modal {
   width: 100%;
   max-width: 500px;
+
+  opacity: 0.1;
   background: var(--background-color);
   padding: 10px;
   border-radius: 10px;
@@ -22,10 +24,19 @@
   align-items: center;
 
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
+
+  animation: modal-animation forwards 300ms ease;
+}
+
+@keyframes modal-animation {
+  100% {
+    opacity: 1;
+    top: 50%;
+  }
 }
 
 .modalHeader {
@@ -38,14 +49,6 @@
   display: flex;
 }
 
-.modalHeader .closeModalIcon {
-  color: var(--blue);
-  font-size: 20px;
-
-  display: block;
-  margin-left: auto;
-}
-
 .modalHeader h3 {
   font-weight: 500;
   font-size: 24px;
@@ -53,17 +56,10 @@
   margin-left: auto;
 }
 
-/* Animation */
-.modal {
-  animation-name: modal-animation;
-  animation-duration: 250ms;
-  animation-fill-mode: backwards;
-  animation-timing-function: ease;
-}
+.modalHeader .closeModalIcon {
+  color: var(--blue);
+  font-size: 20px;
 
-@keyframes modal-animation {
-  0% {
-    opacity: 0.1;
-    top: 35%;
-  }
+  display: block;
+  margin-left: auto;
 }
