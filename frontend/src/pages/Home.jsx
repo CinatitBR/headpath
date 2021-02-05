@@ -9,22 +9,10 @@ import SubjectForm from '../components/SubjectForm'
 import '../global.css'
 
 const App = () => {
+  const [subjectItems, setSubjectItems] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [subjectItems, setSubjectItems] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const getSubjects = async () => {
-    const response = await fetch('/subjects')
-
-    if (!response.ok) {
-      setError('Houve um erro')
-    }
-
-    const subjectItems = await response.json()
-    setSubjectItems(subjectItems)
-    setIsLoading(false)
-  }
 
   const handleModal = () => {
     setIsModalOpen(!isModalOpen)
@@ -35,6 +23,18 @@ const App = () => {
   }
 
   useEffect(() => {
+    const getSubjects = async () => {
+      const response = await fetch('/subjects')
+  
+      if (!response.ok) {
+        setError('Houve um erro')
+      }
+  
+      const subjectItems = await response.json()
+      setSubjectItems(subjectItems)
+      setIsLoading(false)
+    }
+
     getSubjects()
   }, [])
 

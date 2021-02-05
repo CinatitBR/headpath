@@ -51,18 +51,6 @@ const Modal = ({ isOpen, onClose, title, body }) => {
 
     </div>
   )
-
-
-  // return (
-  //   <div 
-  //     className="modal-overlay" 
-  //     onClick={onClose}
-  //   >
-  //     <div className="modal" id="modal" tabIndex="0" onClick={handlePropagation}>
-  //       {children}
-  //     </div>
-  //   </div>
-  // )
 }
 
 export default Modal
