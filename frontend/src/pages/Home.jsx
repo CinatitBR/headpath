@@ -9,7 +9,7 @@ import SubjectForm from '../components/SubjectForm'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-import './Home.css'
+import '../global.css'
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true)
