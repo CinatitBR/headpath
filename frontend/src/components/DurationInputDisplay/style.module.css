@@ -1,0 +1,21 @@
+.durationInputDisplay {
+  cursor: pointer;
+  position: relative;
+  border-bottom: 2px solid var(--brand-color);
+  padding-bottom: 2px;
+  user-select: none;
+}
+
+.durationInputDisplay.focus {
+  cursor: default;
+}
+
+.durationInputDisplay .symbol {
+  color: var(--black);
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.symbol.unsure {
+  color: #646464;
+}

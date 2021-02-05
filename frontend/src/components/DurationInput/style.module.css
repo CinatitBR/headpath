@@ -1,38 +1,4 @@
-.duration-display {
-  cursor: pointer;
-  position: relative;
-  border-bottom: 2px solid var(--brand-color);
-  padding-bottom: 2px;
-  user-select: none;
-}
-
-.duration-display .digit {
-  outline: none;
-  border-right: 1px solid transparent;
-  font-size: 23px;
-  color: var(--black);
-  font-weight: 500;
-}
-
-.duration-display .digit.cursor {
-  border-right: 1px solid var(--black);
-}
-
-.duration-display .symbol {
-  color: var(--black);
-  font-size: 18px;
-  padding-right: 10px;
-}
-
-.duration-display .unsure {
-  color: #646464;
-}
-
-.duration-display .focus {
-  cursor: default;
-}
-
-.duration-input input {
+.durationInput input {
   position: absolute;
   height: 0px;
   width: 0px;

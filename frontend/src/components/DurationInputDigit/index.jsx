@@ -1,10 +1,12 @@
+import style from './style.module.css'
+
 const DurationInputDigit = ({ value, cursor }) => {
   return (
     <span 
       className={`
-        digit 
-        ${value ? '' : 'unsure'} 
-        ${cursor ? 'cursor' : ''}
+        ${style.durationInputDigit} 
+        ${value ? '' : style.unsure} 
+        ${cursor ? style.cursor : ''}
       `}
       tabIndex="0"
     >

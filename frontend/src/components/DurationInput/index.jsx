@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-import DurationInputDigit from '../DurationInputDigit'
+import DurationInputDisplay from '../DurationInputDisplay'
 
-import './style.css'
+import style from './style.module.css'
 
 const DurationInput = ({ value, onChange, error }) => {
-  const [isFieldOnFocus, setIsFieldOnFocus] = useState(false)
+  const [isInputOnFocus, setIsInputOnFocus] = useState(false)
   const [cursor, setCursor] = useState(false)
 
   function handleFocus(e) {
@@ -14,7 +14,7 @@ const DurationInput = ({ value, onChange, error }) => {
 
     target.selectionStart = value.length
     
-    setIsFieldOnFocus(true)
+    setIsInputOnFocus(true)
     setCursor(true)
   }
 
@@ -33,46 +33,22 @@ const DurationInput = ({ value, onChange, error }) => {
   }
 
   function handleBlur() {
-    setIsFieldOnFocus(false)
+    setIsInputOnFocus(false)
     setCursor(false)
   }
   
   return (
     <div 
-      className={`field duration-input`}
+      className={`field ${style.durationInput}`}
     >
       <label>
         Duração
 
-        <div className={`duration-display ${isFieldOnFocus ? 'focus' : ''}`}>
-          <DurationInputDigit 
-            value={value[value.length - 3]} 
-          />
-          <span 
-            className={`
-              symbol 
-              ${!value[value.length - 3] ? 'unsure' : ''}
-            `}
-          >
-            h
-          </span>
-
-          <DurationInputDigit 
-            value={value[value.length - 2]}
-          />
-          <DurationInputDigit 
-            value={value[value.length - 1]} 
-            cursor={cursor}
-          />
-          <span 
-            className={`
-              symbol 
-              ${!value[value.length - 1] ? 'unsure' : ''}
-            `}
-          >
-            m
-          </span>
-        </div>
+        <DurationInputDisplay
+          duration={value}
+          isInputOnFocus={isInputOnFocus}
+          cursor={cursor}
+        />
 
         <input 
           type="tel" 

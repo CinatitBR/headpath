@@ -1,0 +1,15 @@
+.durationInputDigit {
+  outline: none;
+  border-right: 1px solid transparent;
+  font-size: 23px;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.durationInputDigit.cursor {
+  border-right: 1px solid var(--black);
+}
+
+.durationInputDigit.unsure {
+  color: #646464;
+}
