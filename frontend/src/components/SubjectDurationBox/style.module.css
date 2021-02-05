@@ -1,0 +1,9 @@
+.subjectDurationBox {
+  padding: 10px;
+
+  background: var(--blue);
+  border-radius: 45px;
+
+  font-size: 15px;
+  font-weight: 500;
+}

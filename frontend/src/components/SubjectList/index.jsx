@@ -1,5 +1,7 @@
 import Subject from '../Subject'
 
+import style from './style.module.css'
+
 const SubjectList = ({ subjectItems, isLoading, error }) => {
 
   if (error) {
@@ -10,7 +12,7 @@ const SubjectList = ({ subjectItems, isLoading, error }) => {
   }
 
   return (
-    <div className="subjects">
+    <div className={style.subjectList}>
       {
         subjectItems
           .map(({subject_id, subject, duration}) => 

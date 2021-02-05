@@ -1,11 +1,13 @@
 import style from './style.module.css'
 
+import SubjectDurationBox from '../SubjectDurationBox'
+
 const Subject = ({ subject, duration }) => {
   return (
     <div className={style.subject}>
       {subject}
 
-      <div className={style.duration}>{duration}</div>
+      <SubjectDurationBox duration={duration}/>
     </div>
   )
 }
