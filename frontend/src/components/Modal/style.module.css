@@ -1,3 +1,14 @@
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background: rgba(43, 43, 43, 0.7);
+}
+
+/* Modal */
 .modal {
   width: 100%;
   max-width: 500px;
@@ -17,15 +28,7 @@
   z-index: 1;
 }
 
-.close-modal {
-  color: var(--blue);
-  font-size: 20px;
-
-  display: block;
-  margin-left: auto;
-}
-
-.modal-header {
+.modalHeader {
   margin-top: 4px;
   width: 100%;
   padding: 4px;
@@ -35,21 +38,19 @@
   display: flex;
 }
 
-.modal-header h3 {
+.modalHeader .closeModalIcon {
+  color: var(--blue);
+  font-size: 20px;
+
+  display: block;
+  margin-left: auto;
+}
+
+.modalHeader h3 {
   font-weight: 500;
   font-size: 24px;
   color: var(--brand-color);
   margin-left: auto;
-}
-
-/* Modal Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-
-  width: 100vw;
-  height: 100vh;
-  background: rgba(43, 43, 43, 0.7);
 }
 
 /* Animation */

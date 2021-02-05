@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-import './style.css'
+import style from './style.module.css'
 
 const Modal = ({ show, onClose, title, body }) => {
   const scrollbarWidth = window.innerWidth - document.body.clientWidth
@@ -27,22 +27,22 @@ const Modal = ({ show, onClose, title, body }) => {
   if (!show) return null
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className={style.modalOverlay} onClick={onClose}>
 
-      <div className="modal" tabIndex="0" onClick={handlePropagation}>
-        <div className="modal-header">
+      <div className={style.modal} tabIndex="0" onClick={handlePropagation}>
+        <div className={style.modalHeader}>
           <h3>{title}</h3>
 
-          <button type="button" className="close-modal" onClick={onClose}>
+          <button type="button" className={style.closeModalIcon} onClick={onClose}>
             <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
         
-        <div className="modal-body">
+        <div className={style.modalBody}>
           {body}
         </div>
       </div>
-      
+
     </div>
   )
 
