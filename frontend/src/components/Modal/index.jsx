@@ -5,7 +5,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import style from './style.module.css'
 
-const Modal = ({ isOpen, onClose, title, body }) => {
+const Modal = ({ isOpen, onClose, title, children }) => {
   const handlePropagation = (e) => {
     e.stopPropagation()
   }
@@ -45,7 +45,7 @@ const Modal = ({ isOpen, onClose, title, body }) => {
         </div>
         
         <div className={style.modalBody}>
-          {body}
+          {children}
         </div>
       </div>
 

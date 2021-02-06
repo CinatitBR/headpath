@@ -63,10 +63,9 @@ const App = () => {
         isOpen={isModalOpen}
         onClose={handleModal}
         title="Adicionar matéria"
-        body={
-          <SubjectForm onSubjectCreated={handleSubjectCreated} />
-        }
-      />
+      >
+        <SubjectForm onSubjectCreated={handleSubjectCreated} />
+      </Modal>
     </>
   );
 }
