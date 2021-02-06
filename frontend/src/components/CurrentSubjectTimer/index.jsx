@@ -4,15 +4,22 @@ import TimerControls from '../TimerControls'
 
 import style from './style.module.css'
 
-const CurrentSubjectTimer = () => {
-  return (
-    <div className={style.currentSubjectTimer}>
-      <TimerDisplay />
+const defaultCurrentSubject = {
+  subject: '-', 
+  duration: '00:00:00'
+}
 
-      <CurrentSubject />
+const CurrentSubjectTimer = ({ currentSubject = defaultCurrentSubject }) => {
+  const { subject, duration } = currentSubject
+  
+  return (
+    <section className={style.currentSubjectTimer}>
+      <TimerDisplay duration={duration} />
+
+      <CurrentSubject subject={subject} />
 
       <TimerControls />
-    </div>
+    </section>
   )
 }
 

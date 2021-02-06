@@ -15,6 +15,8 @@ const App = () => {
   const [error, setError] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const currentSubject = subjectItems[0]
+
   const handleModal = () => {
     setIsModalOpen(!isModalOpen)
   }
@@ -43,7 +45,7 @@ const App = () => {
     <>
       <Header onModalOpen={handleModal} />
 
-      <CurrentSubjectTimer />
+      <CurrentSubjectTimer currentSubject={currentSubject} />
 
       <section className={style.nextSubjects}>
         <h2>Próximas matérias</h2>
