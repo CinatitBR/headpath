@@ -5,7 +5,7 @@ import TextInput from '../TextInput'
 import DurationInput from '../DurationInput'
 import FieldError from '../FieldError'
 
-import formatDuration from '../../services/formatDuration.js'
+import timeHelper from '../../services/timeHelper.js'
 
 import style from './style.module.css'
 
@@ -62,7 +62,7 @@ const SubjectForm = ({ onSubjectCreated }) => {
   }
 
   const postSubject = async () => {
-    const formatedDuration = formatDuration(values.duration)
+    const formatedDuration = timeHelper.formatFormDuration(values.duration)
     const data = {
       subject: values.subject, 
       duration: formatedDuration
