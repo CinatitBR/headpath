@@ -7,13 +7,11 @@ import TimerControls from '../TimerControls'
 import timeHelper from '../../services/timeHelper'
 import style from './style.module.css'
 
-const CurrentSubjectTimer = ({ currentSubject }) => {
-  const { subject, duration } = currentSubject
-
-  const [timerId, setTimerId] = useState(null)
+const CurrentSubjectTimer = ({ currentSubject: { subject, duration } }) => {
   const [millisecondsLeft, setMillisecondsLeft] = useState(
     timeHelper.fromTimeToMilliseconds(duration)
   )
+  const [timerId, setTimerId] = useState(null)
 
   const formatedMilliseconds = 
     timeHelper.fromMillisecondsToTime(millisecondsLeft)
@@ -36,8 +34,6 @@ const CurrentSubjectTimer = ({ currentSubject }) => {
     clearInterval(timerId)
     setTimerId(null)
   }
-
-  if (!subject && !duration) return null
 
   return (
     <section className={style.currentSubjectTimer}>
