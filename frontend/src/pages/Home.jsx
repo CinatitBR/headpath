@@ -45,7 +45,9 @@ const App = () => {
     <>
       <Header onModalOpen={handleModal} />
 
-      <CurrentSubjectTimer currentSubject={currentSubject} />
+      {currentSubject && 
+        <CurrentSubjectTimer currentSubject={currentSubject} />
+      }
 
       <section className={style.nextSubjects}>
         <h2>Próximas matérias</h2>
