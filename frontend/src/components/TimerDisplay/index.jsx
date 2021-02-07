@@ -1,9 +1,9 @@
 import style from './style.module.css'
 
-const TimerDisplay = ({ duration }) => {
+const TimerDisplay = ({ time }) => {
   return (
     <div className={style.timerDisplay}>
-      {duration}
+      {time}
     </div>
   )
 }
