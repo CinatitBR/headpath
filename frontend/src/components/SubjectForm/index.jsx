@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
 import useValidator from '../../hooks/useValidator'
-
 import TextInput from '../TextInput'
 import DurationInput from '../DurationInput'
 import FieldError from '../FieldError'
 
 import timeHelper from '../../services/timeHelper.js'
-
 import style from './style.module.css'
 
 const SubjectForm = ({ onSubjectCreated }) => {

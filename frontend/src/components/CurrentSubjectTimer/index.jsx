@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import TimerDisplay from '../TimerDisplay'
 import CurrentSubject from '../CurrentSubject'
 import TimerControls from '../TimerControls'

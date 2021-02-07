@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import DurationInputDisplay from '../DurationInputDisplay'
 
 import style from './style.module.css'

@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FaPlus } from 'react-icons/fa'
 
 import style from './style.module.css'
 
@@ -15,7 +14,7 @@ const Header = ({ onModalOpen }) => {
         className={style.openModalIcon}
         onClick={onModalOpen}
       >
-        <FontAwesomeIcon icon={faPlus}/>
+        <FaPlus />
       </button>
     </header>
   )

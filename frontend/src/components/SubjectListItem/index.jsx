@@ -1,6 +1,6 @@
-import style from './style.module.css'
-
 import SubjectDurationBox from '../SubjectDurationBox'
+
+import style from './style.module.css'
 
 const SubjectListItem = ({ subject, duration }) => {
   return (
