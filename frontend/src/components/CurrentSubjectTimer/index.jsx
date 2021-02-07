@@ -34,6 +34,7 @@ const CurrentSubjectTimer = ({ currentSubject }) => {
     if (!timerId) return
 
     clearInterval(timerId)
+    setTimerId(null)
   }
 
   if (!subject && !duration) return null
