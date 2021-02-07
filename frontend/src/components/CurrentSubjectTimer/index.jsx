@@ -41,7 +41,10 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration } }) => {
 
       <CurrentSubject subject={subject} />
 
-      <TimerControls onStartTimer={start} onStopTimer={stop} />
+      <TimerControls
+        onStartTimer={start} 
+        onStopTimer={stop} 
+      />
     </section>
   )
 }
