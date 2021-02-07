@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faUndo } from '@fortawesome/free-solid-svg-icons'
+import { FaPlay, FaPause } from 'react-icons/fa'
 
 import style from './style.module.css'
 
@@ -11,7 +10,7 @@ const TimerControls = ({ onStartTimer, onStopTimer }) => {
         className={style.timerControl}
         onClick={onStartTimer}
       >
-        <FontAwesomeIcon icon={faPlay} />
+        <FaPlay />
       </button>
 
       <button
@@ -19,7 +18,7 @@ const TimerControls = ({ onStartTimer, onStopTimer }) => {
         className={style.timerControl}
         onClick={onStopTimer}
       >
-        <FontAwesomeIcon icon={faUndo} />
+        <FaPause />
       </button>
     </div>
   )
