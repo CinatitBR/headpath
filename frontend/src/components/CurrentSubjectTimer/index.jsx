@@ -22,8 +22,8 @@ const CurrentSubjectTimer = ({ currentSubject }) => {
     if (timerId) return
 
     const newTimerId = setInterval(() => {
-      setMillisecondsLeft(prevmillisecondsLeft => 
-        prevmillisecondsLeft - 1000
+      setMillisecondsLeft(prevMillisecondsLeft => 
+        prevMillisecondsLeft - 1000
       )
     }, 1000)
 
