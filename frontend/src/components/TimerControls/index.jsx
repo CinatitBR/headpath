@@ -6,7 +6,7 @@ import style from './style.module.css'
 const TimerControls = ({ onStartTimer, onStopTimer}) => {
   const [isTimerRunning, setIsTimerRunning] = useState(false)
 
-  const handleControlClick = (e) => {
+  const handleControlClick = e => {
     e.stopPropagation()
     const { name } = e.currentTarget
 
