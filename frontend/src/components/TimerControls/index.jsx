@@ -3,8 +3,8 @@ import { FaPlay, FaPause } from 'react-icons/fa'
 
 import style from './style.module.css'
 
-const TimerControls = ({ onStartTimer, onStopTimer}) => {
-  const [isTimerRunning, setIsTimerRunning] = useState(false)
+const TimerControls = ({ onStartTimer, onStopTimer, isTimerRunning}) => {
+  // const [isTimerRunning, setIsTimerRunning] = useState(false)
 
   const handleControlClick = e => {
     e.stopPropagation()
@@ -17,7 +17,7 @@ const TimerControls = ({ onStartTimer, onStopTimer}) => {
       onStopTimer()
     }
 
-    setIsTimerRunning(!isTimerRunning)
+    // setIsTimerRunning(!isTimerRunning)
   }
 
   return (
