@@ -8,7 +8,6 @@ const TimerControls = ({ onStartTimer, onStopTimer, isTimerRunning}) => {
       {!isTimerRunning &&
         <button
           type="button"
-          name="play"
           className={style.timerControl} 
           onClick={onStartTimer}
         >
@@ -19,7 +18,6 @@ const TimerControls = ({ onStartTimer, onStopTimer, isTimerRunning}) => {
       {isTimerRunning && 
         <button
           type="button"
-          name="pause"
           className={style.timerControl}
           onClick={onStopTimer}
         >
