@@ -16,6 +16,7 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const currentSubject = subjectItems[0]
+  const nextSubjects = subjectItems.slice(1)
 
   const handleModal = () => {
     setIsModalOpen(!isModalOpen)
@@ -54,7 +55,7 @@ const App = () => {
 
         <div style={{paddingLeft: '10px'}}>
           <SubjectList 
-            subjectItems={subjectItems} 
+            subjectItems={nextSubjects} 
             isLoading={isLoading}
             error={error}
           />
