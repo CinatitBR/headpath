@@ -2,4 +2,10 @@
   font-weight: 500;
   color: var(--blue);
   font-size: 50px;
+  transition: color 250ms;
+}
+
+.running {
+  color: var(--light-black);
+  /* color: #050a26cc; */
 }
