@@ -1,8 +1,16 @@
 import style from './style.module.css'
 
 const TimerDisplay = ({ time, isTimerRunning }) => {
+  // const exp = isTimerRunning 
+
   return (
-    <div className={`${style.timerDisplay} ${isTimerRunning ? style.running : ''}`}>
+    <div 
+    className={`
+      ${style.timerDisplay} 
+      ${isTimerRunning === true ? style.running : ''}
+      ${isTimerRunning === false ? style.stopped : ''}
+    `}
+    >
       {time}
     </div>
   )

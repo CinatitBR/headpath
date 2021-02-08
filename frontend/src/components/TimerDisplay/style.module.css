@@ -2,10 +2,14 @@
   font-weight: 500;
   color: var(--blue);
   font-size: 50px;
-  transition: color 250ms;
+  transition: color 250ms, opacity 250ms;
 }
 
 .running {
   color: var(--light-black);
-  /* color: #050a26cc; */
+}
+
+.stopped {
+  color: var(--light-black);
+  opacity: 0.8;
 }
