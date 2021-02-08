@@ -6,18 +6,13 @@ import TimerControls from '../TimerControls'
 import timeHelper from '../../services/timeHelper'
 import style from './style.module.css'
 
-// const initialTimerState = {
-//   running: false,
-//   stopped: true
-// }
-
 const CurrentSubjectTimer = ({ currentSubject: { subject, duration } }) => {
   const durationMilliseconds = timeHelper
     .fromTimeToMilliseconds(duration)
 
   const [millisecondsLeft, setMillisecondsLeft] = useState(durationMilliseconds)
   const [timerId, setTimerId] = useState(null)
-  const [isTimerRunning, setIsTimerRunning] = useState(false)
+  const [isTimerRunning, setIsTimerRunning] = useState(null)
 
   const formatedMilliseconds = timeHelper
     .fromMillisecondsToTime(millisecondsLeft)
