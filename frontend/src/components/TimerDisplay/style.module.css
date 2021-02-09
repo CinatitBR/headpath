@@ -1,17 +1,31 @@
 .timerDisplay {
   font-size: 55px;
   font-weight: 500;
-  color: var(--light-black);
-  transition: color 250ms, opacity 250ms, font-size 300ms;
 }
 
-.running {
+/* Countdown */
+.countdownValue {
+  color: var(--light-black);
+  transition: color 300ms, opacity 300ms, font-size 300ms;
+}
+
+.countdownValue.running {
   font-size: 75px;
   color: var(--blue);
 }
 
-.stopped {
+.countdownValue.stopped {
   font-size: 75px;
   color: var(--blue);
   opacity: 0.8;
+}
+
+/* Timer finished */
+.timerFinished .checkIcon {
+  font-size: 75px;
+  color: #fff;
+
+  border-radius: 10px;
+  padding: 5px;
+  background: #25A835;
 }
