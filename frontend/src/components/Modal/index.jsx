@@ -34,17 +34,17 @@ const Modal = ({ isOpen, onClose, title, children }) => {
     <div className={style.modalOverlay} onClick={onClose}>
 
       <div className={style.modal} tabIndex="0" onClick={handlePropagation}>
-        <div className={style.modalHeader}>
+        <header className={style.modalHeader}>
           <h3>{title}</h3>
 
           <button type="button" className={style.closeModalIcon} onClick={onClose}>
             <FaTimes />
           </button>
-        </div>
+        </header>
         
-        <div className={style.modalBody}>
+        <section className={style.modalBody}>
           {children}
-        </div>
+        </section>
       </div>
 
     </div>
