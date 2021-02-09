@@ -1,17 +1,17 @@
 .timerDisplay {
-  font-size: 50px;
+  font-size: 55px;
   font-weight: 500;
-  color: var(--blue);
+  color: var(--light-black);
   transition: color 250ms, opacity 250ms, font-size 300ms;
 }
 
 .running {
-  font-size: 70px;
-  color: var(--light-black);
+  font-size: 75px;
+  color: var(--blue);
 }
 
 .stopped {
-  font-size: 70px;
-  color: var(--light-black);
+  font-size: 75px;
+  color: var(--blue);
   opacity: 0.8;
 }
