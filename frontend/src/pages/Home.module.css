@@ -1,3 +1,7 @@
+.blur {
+  filter: blur(2px);
+}
+
 .nextSubjects {
   margin: 0 auto;
   margin-top: 40px;

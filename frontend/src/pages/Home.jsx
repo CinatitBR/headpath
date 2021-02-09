@@ -43,35 +43,37 @@ const App = () => {
   }, [])
 
   return (
-    <div class="container">
-      <Header onModalOpen={handleModal} />
+    <>
+      <div className={isModalOpen ? style.blur : ''}>
+        <Header onModalOpen={handleModal} />
 
-      <main>
-        {currentSubject && 
-          <CurrentSubjectTimer currentSubject={currentSubject} />
-        }
+        <main>
+          {currentSubject && 
+            <CurrentSubjectTimer currentSubject={currentSubject} />
+          }
 
-        <section className={style.nextSubjects}>
-          <h2>Próximas matérias</h2>
+          <section className={style.nextSubjects}>
+            <header><h2>Próximas matérias</h2></header>
 
-          <div style={{paddingLeft: '10px'}}>
-            <SubjectList 
-              subjectItems={nextSubjects} 
-              isLoading={isLoading}
-              error={error}
-            />
-          </div>
-        </section>
+            <div style={{paddingLeft: '10px'}}>
+              <SubjectList 
+                subjectItems={nextSubjects} 
+                isLoading={isLoading}
+                error={error}
+              />
+            </div>
+          </section>
+        </main>
+      </div>
 
-        <Modal 
-          isOpen={isModalOpen}
-          onClose={handleModal}
-          title="Adicionar matéria"
-        >
-          <SubjectForm onSubjectCreated={handleSubjectCreated} />
-        </Modal>
-      </main>
-    </div>
+      <Modal 
+        isOpen={isModalOpen}
+        onClose={handleModal}
+        title="Adicionar matéria"
+      >
+        <SubjectForm onSubjectCreated={handleSubjectCreated} />
+      </Modal>
+    </>
   );
 }
 

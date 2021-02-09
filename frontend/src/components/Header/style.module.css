@@ -1,4 +1,4 @@
-header {
+.mainHeader {
   margin: 20px;
   padding: 10px;
 
@@ -12,7 +12,7 @@ header {
   position: relative;
 }
 
-header .brandName {
+.mainHeader .brandName {
   position: absolute;
 
   text-decoration: none;
@@ -22,7 +22,7 @@ header .brandName {
   letter-spacing: 3px;
 }
 
-header .openModalIcon {
+.mainHeader .openModalIcon {
   margin: 0 auto;
 
   font-size: 35px;

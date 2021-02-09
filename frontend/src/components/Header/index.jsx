@@ -4,7 +4,7 @@ import style from './style.module.css'
 
 const Header = ({ onModalOpen }) => {
   return (
-    <header>
+    <header className={style.mainHeader}>
       <a href="#" className={style.brandName}>
         Headpath
       </a>
