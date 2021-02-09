@@ -5,14 +5,30 @@
 .currentSubject .subject {
   margin-top: 20px;
   background: var(--brand-color);
-  font-size: 25px;
-  color: var(--white);
   padding: 4px 35px;
   border-radius: 45px;
+}
+
+.currentSubject .subject h3 {
+  color: var(--white);
+  font-size: 25px;
+  position: relative;
 }
 
 .currentSubject .description {
   font-size: 18px;
   color: var(--brand-color);
   margin-top: 2px;
+
+  position: relative;
+}
+
+.lineThrough::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: var(--brand-color);
+  position: absolute;
+  left: 0;
+  top: 55%;
 }
