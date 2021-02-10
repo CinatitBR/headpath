@@ -1,11 +1,17 @@
-import { FaPlay, FaPause } from 'react-icons/fa'
+import { FaPlay, FaPause, FaArrowRight } from 'react-icons/fa'
 
 import style from './style.module.css'
 
 const TimerControls = ({ onStartTimer, onStopTimer, timerState}) => {
   return (
     <div className={style.timerControls}>
-      {!timerState.running &&
+      {timerState.finished &&
+        <button type="button" className={style.timerControl}>
+          <FaArrowRight />
+        </button>
+      }
+
+      {(!timerState.finished && !timerState.running) &&
         <button
           type="button"
           className={style.timerControl} 
@@ -15,7 +21,7 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState}) => {
         </button>
       }
 
-      {timerState.running && 
+      {(!timerState.finished && timerState.running) && 
         <button
           type="button"
           className={style.timerControl}
