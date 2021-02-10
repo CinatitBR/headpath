@@ -2,10 +2,10 @@ import { FaPlay, FaPause } from 'react-icons/fa'
 
 import style from './style.module.css'
 
-const TimerControls = ({ onStartTimer, onStopTimer, isTimerRunning}) => {
+const TimerControls = ({ onStartTimer, onStopTimer, timerState}) => {
   return (
     <div className={style.timerControls}>
-      {!isTimerRunning &&
+      {!timerState.running &&
         <button
           type="button"
           className={style.timerControl} 
@@ -15,7 +15,7 @@ const TimerControls = ({ onStartTimer, onStopTimer, isTimerRunning}) => {
         </button>
       }
 
-      {isTimerRunning && 
+      {timerState.running && 
         <button
           type="button"
           className={style.timerControl}

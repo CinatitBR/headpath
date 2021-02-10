@@ -2,22 +2,28 @@ import { FaCheck } from 'react-icons/fa'
 
 import style from './style.module.css'
 
-const TimerDisplay = ({ time, isTimerRunning }) => {
+const TimerDisplay = ({ time, timerState }) => {
+  console.log(timerState)
+
   return (
     <div className={style.timerDisplay}>
-      <div className={style.timerFinished}>
-        <FaCheck className={style.checkIcon} />
-      </div>
+      {timerState.finished &&
+        <div className={style.timerFinished}>
+          <FaCheck className={style.checkIcon} />
+        </div>
+      }
 
-      {/* <div 
-        className={`
-          ${style.countdown} 
-          ${isTimerRunning === true ? style.running : ''}
-          ${isTimerRunning === false ? style.stopped : ''}
-        `}
-      >
-        {time}
-      </div> */}
+      {!timerState.finished &&
+        <div 
+          className={`
+            ${style.countdown} 
+            ${timerState.running === true ? style.running : ''}
+            ${timerState.running === false ? style.stopped : ''}
+          `}
+        >
+          {time}
+        </div>
+      }
     </div>
   )
 }

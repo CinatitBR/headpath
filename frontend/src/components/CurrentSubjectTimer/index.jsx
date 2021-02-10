@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TimerDisplay from '../TimerDisplay'
 import CurrentSubject from '../CurrentSubject'
 import TimerControls from '../TimerControls'
@@ -6,28 +6,36 @@ import TimerControls from '../TimerControls'
 import timeHelper from '../../services/timeHelper'
 import style from './style.module.css'
 
+const initialTimerState = {
+  running: null,
+  finished: false
+}
+
 const CurrentSubjectTimer = ({ currentSubject: { subject, duration } }) => {
   const durationMilliseconds = timeHelper
     .fromTimeToMilliseconds(duration)
 
   const [millisecondsLeft, setMillisecondsLeft] = useState(durationMilliseconds)
   const [timerId, setTimerId] = useState(null)
-  const [isTimerRunning, setIsTimerRunning] = useState(null)
+  const [timerState, setTimerState] = useState(initialTimerState)
 
-  const formatedMilliseconds = timeHelper
+  const formattedMilliseconds = timeHelper
     .fromMillisecondsToTime(millisecondsLeft)
 
   const start = () => {
     if (timerId) return
 
-    const newTimerId = setInterval(() => {
+    const newTimerId = setInterval(() => {  
       setMillisecondsLeft(prevMillisecondsLeft =>
         prevMillisecondsLeft - 1000
       )
     }, 1000)
 
     setTimerId(newTimerId)
-    setIsTimerRunning(!isTimerRunning)
+    setTimerState({
+      ...timerState, 
+      running: true
+    })
   }
 
   const stop = () => {
@@ -35,22 +43,42 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration } }) => {
 
     clearInterval(timerId)
     setTimerId(null)
-    setIsTimerRunning(!isTimerRunning)
+
+    setTimerState({
+      ...timerState, 
+      running: false
+    })
   }
+
+  useEffect(() => {
+    const shutdownTimer = () => {
+      clearInterval(timerId)
+      setTimerId(null)
+
+      setTimerState({
+        running: null,
+        finished: true
+      })
+    }
+
+    if (millisecondsLeft === 1480000) {
+      setTimeout(shutdownTimer, 1000)
+    }
+  }, [millisecondsLeft, timerId])
 
   return (
     <section className={style.currentSubjectTimer}>
       <TimerDisplay 
-        time={formatedMilliseconds} 
-        isTimerRunning={isTimerRunning}
+        time={formattedMilliseconds} 
+        timerState={timerState}
       />
 
-      <CurrentSubject subject={subject} />
+      <CurrentSubject subject={subject} timerState={timerState} />
 
       <TimerControls
         onStartTimer={start} 
         onStopTimer={stop} 
-        isTimerRunning={isTimerRunning}
+        timerState={timerState}
       />
     </section>
   )

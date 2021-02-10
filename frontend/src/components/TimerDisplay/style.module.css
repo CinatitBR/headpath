@@ -4,17 +4,17 @@
 }
 
 /* Countdown */
-.countdownValue {
+.countdown {
   color: var(--light-black);
   transition: color 300ms, opacity 300ms, font-size 300ms;
 }
 
-.countdownValue.running {
+.countdown.running {
   font-size: 75px;
   color: var(--blue);
 }
 
-.countdownValue.stopped {
+.countdown.stopped {
   font-size: 75px;
   color: var(--blue);
   opacity: 0.8;
