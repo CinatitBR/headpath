@@ -11,7 +11,7 @@ const initialTimerState = {
   finished: false
 }
 
-const CurrentSubjectTimer = ({ currentSubject: { subject, duration } }) => {
+const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrentSubject }) => {
   const durationMilliseconds = timeHelper
     .fromTimeToMilliseconds(duration)
 
@@ -50,6 +50,13 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration } }) => {
     })
   }
 
+  const restartTimer = () => {
+    setCurrentSubject()
+    setMillisecondsLeft(durationMilliseconds)
+
+    setTimerState(initialTimerState)
+  }
+
   useEffect(() => {
     const shutdownTimer = () => {
       clearInterval(timerId)
@@ -79,6 +86,7 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration } }) => {
         onStartTimer={start} 
         onStopTimer={stop} 
         timerState={timerState}
+        onGetNextSubject={restartTimer}
       />
     </section>
   )

@@ -26,6 +26,13 @@ const App = () => {
     setSubjectItems([...subjectItems, newSubject])
   }
 
+  const setCurrentSubject = () => {
+    const newSubjectItems = [...subjectItems] 
+    newSubjectItems.push(newSubjectItems.shift())
+
+    setSubjectItems(newSubjectItems)
+  }
+
   useEffect(() => {
     const getSubjects = async () => {
       const response = await fetch('/subjects')
@@ -49,7 +56,10 @@ const App = () => {
 
         <main>
           {currentSubject && 
-            <CurrentSubjectTimer currentSubject={currentSubject} />
+            <CurrentSubjectTimer 
+              currentSubject={currentSubject} 
+              setCurrentSubject={setCurrentSubject}
+            />
           }
 
           <section className={style.nextSubjects}>
