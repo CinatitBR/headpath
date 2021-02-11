@@ -8,8 +8,8 @@ const TimerDisplay = ({ time, timerState }) => {
   return (
     <div className={style.timerDisplay}>
       {timerState.finished &&
-        <div className={style.timerFinished}>
-          <FaCheck className={style.checkIcon} />
+        <div className={`${style.timerFinished}`}>
+          <FaCheck className={`${style.checkIcon} ${style.fadeIn}`} />
         </div>
       }
 

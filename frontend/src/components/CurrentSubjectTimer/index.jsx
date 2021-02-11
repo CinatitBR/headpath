@@ -61,7 +61,7 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration } }) => {
       })
     }
 
-    if (millisecondsLeft === 1480000) {
+    if (millisecondsLeft === 1495000) {
       setTimeout(shutdownTimer, 1000)
     }
   }, [millisecondsLeft, timerId])

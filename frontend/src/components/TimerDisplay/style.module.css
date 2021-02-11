@@ -29,3 +29,8 @@
   padding: 5px;
   background: #25A835;
 }
+
+/* fadeIn */
+.fadeIn {
+  composes: fadeIn from '../../global.css';
+}

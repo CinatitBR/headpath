@@ -30,3 +30,13 @@ button {
 input {
   font-family: inherit;
 }
+
+/* FadeIn */
+.fadeIn {
+  animation: fadeIn forwards ease 1.5s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
