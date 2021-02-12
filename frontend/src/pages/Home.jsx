@@ -15,7 +15,9 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
   const [showSnackbar, setShowSnackbar] = useState(false)
+  const [snackbarDelay, setSnackbarDelay] = useState(0)
   const [snackbarMessage, setSnackbarMessage] = useState(null)
 
   const currentSubject = subjectItems[0]
@@ -29,8 +31,9 @@ const App = () => {
     setSubjectItems([...subjectItems, newSubject])
   }
 
-  const handleCallSnackbar = (message) => {
+  const handleCallSnackbar = ({message, delay }) => {
     setShowSnackbar(true)
+    setSnackbarDelay(delay)
     setSnackbarMessage(message)
   }
 
@@ -85,6 +88,7 @@ const App = () => {
 
           <Snackbar 
             message={snackbarMessage} 
+            delay={snackbarDelay}
             show={showSnackbar}
             onCloseSnackbar={() => setShowSnackbar(false)}
           />

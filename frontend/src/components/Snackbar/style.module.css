@@ -28,7 +28,7 @@
   background: var(--brand-color);
   border-radius: 10px;
   height: 100%;
-  animation: innerBar forwards ease-in-out 2s;
+  animation: innerBar forwards ease-in-out;
 }
 
 @keyframes innerBar {

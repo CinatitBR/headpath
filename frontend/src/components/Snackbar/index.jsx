@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 
 import style from './style.module.css'
 
-const Snackbar = ({ message, show, onCloseSnackbar }) => {
+const Snackbar = ({ message, delay, show, onCloseSnackbar }) => {
   
   useEffect(() => {
     if (show) {
-      setTimeout(() => onCloseSnackbar(), 2000)
+      setTimeout(() => onCloseSnackbar(), delay)
     }
-  }, [show, onCloseSnackbar])
+  }, [show, onCloseSnackbar, delay])
 
   if (!show) return null
 
@@ -17,7 +17,10 @@ const Snackbar = ({ message, show, onCloseSnackbar }) => {
       <p>{message}</p>
 
       <div className={style.progressBar}>
-        <div className={style.innerBar}></div>
+        <div 
+          className={style.innerBar} 
+          style={{animationDuration: `${delay}ms`}}>
+        </div>
       </div>
     </div>
   )

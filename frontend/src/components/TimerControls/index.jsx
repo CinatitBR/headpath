@@ -5,7 +5,10 @@ import style from './style.module.css'
 const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject, onCallSnackbar}) => {
   const handleStopTimer = () => {
     onStopTimer()
-    onCallSnackbar('O Relógio foi pausado')
+    onCallSnackbar({ 
+      message: 'O relógio foi pausado', 
+      delay: 1000
+    })
   }
   
   return (
