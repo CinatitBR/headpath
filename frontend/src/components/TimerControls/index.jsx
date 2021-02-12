@@ -5,29 +5,44 @@ import style from './style.module.css'
 
 const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject, onCallSnackbar}) => {
   const [showPlay, setShowPlay] = useState(true)
-  const [showPause, setShowPause] = useState(true)
+  const [showStop, setShowStop] = useState(true)
 
-  const handleStopTimer = () => {
-    onStopTimer()
-    
-    setShowPlay(false)
-    setTimeout(() => setShowPlay(true), 1000)
-
-    onCallSnackbar({ 
-      message: 'O timer foi pausado', 
-      delay: 1000
-    })
+  const disableStopControl = delay => {
+    onStartTimer()
+    setShowStop(false)
+    setTimeout(() => setShowStop(true), delay)
   }
 
-  const handlePlayTimer = () => {
-    onStartTimer()
-    
-    setShowPause(false)
-    setTimeout(() => setShowPause(true), 1000)
+  const disablePlayControl = delay => {
+    onStopTimer()
+    setShowPlay(false)
+    setTimeout(() => setShowPlay(true), delay)
+  }
+
+  const handleControlClick = (e) => {
+    const { name } = e.currentTarget
+
+    const snackbarDelay = 700
+    let snackbarMessage = ''
+
+    switch (name) {
+      case 'play':
+        disableStopControl(snackbarDelay)
+        snackbarMessage = 'O timer foi iniciado'
+        break
+
+      case 'stop':
+        disablePlayControl(snackbarDelay)
+        snackbarMessage = 'O timer foi pausado'
+        break
+
+      default:
+        return
+    }
 
     onCallSnackbar({ 
-      message: 'O timer foi iniciado', 
-      delay: 1000
+      message: snackbarMessage,
+      delay: snackbarDelay
     })
   }
   
@@ -46,8 +61,9 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
       {(!timerState.finished && !timerState.running) &&
         <button
           type="button"
+          name="play"
           className={style.timerControl} 
-          onClick={handlePlayTimer}
+          onClick={handleControlClick}
           disabled={!showPlay}
         >
           <FaPlay />
@@ -57,9 +73,10 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
       {(!timerState.finished && timerState.running) && 
         <button
           type="button"
+          name="stop"
           className={style.timerControl}
-          onClick={handleStopTimer}
-          disabled={!showPause}
+          onClick={handleControlClick}
+          disabled={!showStop}
         >
           <FaPause />
         </button>
