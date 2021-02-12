@@ -5,6 +5,7 @@ import style from './style.module.css'
 
 const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject, onCallSnackbar}) => {
   const [showPlay, setShowPlay] = useState(true)
+  const [showPause, setShowPause] = useState(true)
 
   const handleStopTimer = () => {
     onStopTimer()
@@ -13,7 +14,19 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
     setTimeout(() => setShowPlay(true), 1000)
 
     onCallSnackbar({ 
-      message: 'O relógio foi pausado', 
+      message: 'O timer foi pausado', 
+      delay: 1000
+    })
+  }
+
+  const handlePlayTimer = () => {
+    onStartTimer()
+    
+    setShowPause(false)
+    setTimeout(() => setShowPause(true), 1000)
+
+    onCallSnackbar({ 
+      message: 'O timer foi iniciado', 
       delay: 1000
     })
   }
@@ -34,7 +47,7 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
         <button
           type="button"
           className={style.timerControl} 
-          onClick={onStartTimer}
+          onClick={handlePlayTimer}
           disabled={!showPlay}
         >
           <FaPlay />
@@ -46,6 +59,7 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
           type="button"
           className={style.timerControl}
           onClick={handleStopTimer}
+          disabled={!showPause}
         >
           <FaPause />
         </button>
