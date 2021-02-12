@@ -19,7 +19,7 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
     setTimeout(() => setShowPlay(true), delay)
   }
 
-  const handleControlClick = (e) => {
+  const handleControlClick = e => {
     const { name } = e.currentTarget
 
     const snackbarDelay = 700
