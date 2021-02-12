@@ -11,7 +11,7 @@ const initialTimerState = {
   finished: false
 }
 
-const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrentSubject }) => {
+const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrentSubject, onCallSnackbar }) => {
   const durationMilliseconds = timeHelper
     .fromTimeToMilliseconds(duration)
 
@@ -87,6 +87,7 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrent
         onStopTimer={stop} 
         timerState={timerState}
         onGetNextSubject={restartTimer}
+        onCallSnackbar={onCallSnackbar}
       />
     </section>
   )

@@ -5,6 +5,7 @@ import CurrentSubjectTimer from '../components/CurrentSubjectTimer'
 import SubjectList from '../components/SubjectList'
 import Modal from '../components/Modal'
 import SubjectForm from '../components/SubjectForm'
+import Snackbar from '../components/Snackbar'
 
 import '../global.css'
 import style from './Home.module.css'
@@ -14,6 +15,8 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [showSnackbar, setShowSnackbar] = useState(false)
+  const [snackbarMessage, setSnackbarMessage] = useState(null)
 
   const currentSubject = subjectItems[0]
   const nextSubjects = subjectItems.slice(1)
@@ -24,6 +27,11 @@ const App = () => {
 
   const handleSubjectCreated = (newSubject) => {
     setSubjectItems([...subjectItems, newSubject])
+  }
+
+  const handleCallSnackbar = (message) => {
+    setShowSnackbar(true)
+    setSnackbarMessage(message)
   }
 
   const setCurrentSubject = () => {
@@ -59,6 +67,7 @@ const App = () => {
             <CurrentSubjectTimer 
               currentSubject={currentSubject} 
               setCurrentSubject={setCurrentSubject}
+              onCallSnackbar={handleCallSnackbar}
             />
           }
 
@@ -73,6 +82,12 @@ const App = () => {
               />
             </div>
           </section>
+
+          <Snackbar 
+            message={snackbarMessage} 
+            show={showSnackbar}
+            onCloseSnackbar={() => setShowSnackbar(false)}
+          />
         </main>
       </div>
 
@@ -81,7 +96,9 @@ const App = () => {
         onClose={handleModal}
         title="Adicionar matéria"
       >
-        <SubjectForm onSubjectCreated={handleSubjectCreated} />
+        <SubjectForm 
+          onSubjectCreated={handleSubjectCreated} 
+        />
       </Modal>
     </>
   );

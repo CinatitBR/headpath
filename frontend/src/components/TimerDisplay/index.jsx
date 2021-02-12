@@ -3,8 +3,6 @@ import { FaCheck } from 'react-icons/fa'
 import style from './style.module.css'
 
 const TimerDisplay = ({ time, timerState }) => {
-  console.log(timerState)
-
   return (
     <div className={style.timerDisplay}>
       {timerState.finished &&

@@ -2,7 +2,12 @@ import { FaPlay, FaPause, FaArrowRight } from 'react-icons/fa'
 
 import style from './style.module.css'
 
-const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject}) => {
+const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject, onCallSnackbar}) => {
+  const handleStopTimer = () => {
+    onStopTimer()
+    onCallSnackbar('O Relógio foi pausado')
+  }
+  
   return (
     <div className={style.timerControls}>
       {timerState.finished &&
@@ -29,7 +34,7 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
         <button
           type="button"
           className={style.timerControl}
-          onClick={onStopTimer}
+          onClick={handleStopTimer}
         >
           <FaPause />
         </button>
