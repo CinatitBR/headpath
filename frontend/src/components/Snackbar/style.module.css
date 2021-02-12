@@ -39,3 +39,9 @@
     width: 100%; 
   }
 }
+
+/* Disabled */
+button:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
