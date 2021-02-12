@@ -62,7 +62,12 @@ const App = () => {
 
   return (
     <>
-      <div className={isModalOpen ? style.blur : ''}>
+      <div 
+        className={`
+          ${style.wrapper} 
+          ${isModalOpen ? style.blur : ''}
+        `}
+      >
         <Header onModalOpen={handleModal} />
 
         <main>

@@ -1,9 +1,12 @@
-main {
-  position: relative;
+.wrapper {
+  max-width: 1300px;
+  padding: 20px;
+  margin: 0 auto;
+  overflow: auto;
 }
 
-.blur {
-  filter: blur(2px);
+.wrapper main {
+  position: relative;
 }
 
 .nextSubjects {
@@ -12,15 +15,19 @@ main {
   max-width: 300px;
 }
 
-.nextSubjects h2 {
+.wrapper .nextSubjects h2 {
   font-weight: 400;
   font-size: 25px;
   color: var(--brand-color);
 }
 
-.nextSubjects .see-more {
+.wrapper .nextSubjects .see-more {
   margin-top: 10px;
   margin-left: 10px;
   font-size: 25px;
   color: var(--brand-color);
+}
+
+.blur {
+  filter: blur(2px);
 }
