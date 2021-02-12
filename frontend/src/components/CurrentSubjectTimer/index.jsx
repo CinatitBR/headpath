@@ -24,14 +24,19 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrent
 
   const start = () => {
     if (timerId) return
-
-    const newTimerId = setInterval(() => {  
+    
+    const tick = () => {  
       setMillisecondsLeft(prevMillisecondsLeft =>
         prevMillisecondsLeft - 1000
       )
-    }, 1000)
+    }
 
+    // Call tick immediately the first time
+    setTimeout(tick, 0)
+
+    const newTimerId = setInterval(tick, 1000)
     setTimerId(newTimerId)
+    
     setTimerState({
       ...timerState, 
       running: true
