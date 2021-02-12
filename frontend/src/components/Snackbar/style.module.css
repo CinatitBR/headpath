@@ -13,8 +13,8 @@
   row-gap: 10px;
 
   position: absolute;
+  top: 0px;
   right: 0px;
-  top: 10px;
 }
 
 .progressBar {
@@ -38,10 +38,4 @@
   100% { 
     width: 100%; 
   }
-}
-
-/* Disabled */
-button:disabled {
-  opacity: 0.8;
-  cursor: default;
 }

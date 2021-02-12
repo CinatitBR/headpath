@@ -24,11 +24,6 @@
   color: var(--white);
 }
 
-.SubjectForm button:disabled {
-  opacity: 0.8;
-  cursor: default;
-}
-
 .SubjectForm .success {
   width: 100%;
   margin-top: 10px;

@@ -27,6 +27,11 @@ button {
   font-family: inherit;
 }
 
+button:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
 input {
   font-family: inherit;
 }
