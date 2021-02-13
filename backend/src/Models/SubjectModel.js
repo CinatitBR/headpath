@@ -1,7 +1,10 @@
 import db from '../services/db.js'
 
 const findAll = async () => {
-  const sql = 'SELECT * FROM `subject`'
+  const sql = `
+    SELECT * FROM subject
+    ORDER BY position ASC
+  `
 
   try {
     const [rows, fields] = await db.query(sql)
