@@ -52,6 +52,67 @@ const create = async ({ subject, duration }) => {
   }
 }
 
-const SubjectModel = { findAll, findOne, create }
+const setCurrentSubject = async () => {
+  let query = ``
+
+  try {
+    await db.query('START TRANSACTION')
+
+    // Get smallest position value
+    query = `
+      SET @min_position = (SELECT MIN(position) FROM subject)
+    `   
+
+    await db.query(query)
+
+    // Get biggest position value
+    query = `
+      SET @max_position = (SELECT MAX(position) FROM subject)
+    `
+
+    await db.query(query)
+
+    // Get current subject id
+    query = `
+      SET @current_subject_id = (
+        SELECT subject_id FROM subject 
+        WHERE position =  @min_position
+      )
+    `
+
+    await db.query(query)
+  
+    // Decrement positions by one 
+    query = `
+      UPDATE subject
+      SET position = position - 1
+    ` 
+
+    await db.query(query)
+
+    // Define previous current subject as last position
+    query = `
+      UPDATE subject
+      SET position = @max_position + 1
+      WHERE subject_id = @current_subject_id
+    `
+
+    await db.query(query)
+
+    await db.query('COMMIT')
+  }
+  catch (err) {
+    await db.query('ROLLBACK')
+
+    throw new Error(err)
+  }
+}
+
+const SubjectModel = { 
+  findAll, 
+  findOne, 
+  create,
+  setCurrentSubject
+}
 
 export default SubjectModel
