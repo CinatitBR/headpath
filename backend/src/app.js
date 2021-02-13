@@ -8,6 +8,7 @@ const app = express()
 app.use(express.json())
 
 app.get('/subjects', SubjectController.index)
+app.get('/subjects/set-current-subject', SubjectController.setCurrentSubject)
 app.post('/subjects/create', SubjectController.create)
 
 app.use(ErrorController.index)

@@ -52,6 +52,21 @@ const create = async (req, res, next) => {
   catch (err) { next(err) }
 }
 
-const SubjectController = { index, create }
+const setCurrentSubject = async (req, res, next) => {
+  try {
+    await SubjectModel.setCurrentSubject()
+
+    return res
+      .status(200)
+      .json({ status: 'ok' })
+  }
+  catch (err) { next(err) }
+}
+
+const SubjectController = { 
+  index, 
+  create,
+  setCurrentSubject
+}
 
 export default SubjectController
