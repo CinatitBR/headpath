@@ -82,6 +82,7 @@ const SubjectForm = ({ onSubjectCreated }) => {
     // If request was not successful
     if (!response.ok) {
       setErrors(feedback)
+      return
     } 
 
     const { newSubject } = feedback

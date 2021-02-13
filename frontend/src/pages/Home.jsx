@@ -37,7 +37,14 @@ const App = () => {
     setSnackbarMessage(message)
   }
 
-  const setCurrentSubject = () => {
+  const setCurrentSubject = async () => {
+    const response = await fetch('/subjects/set-current-subject')
+
+    if (!response.ok) {
+      alert('Houve um erro! Por favor, tente novamente')
+      return
+    }
+
     const newSubjectItems = [...subjectItems] 
     newSubjectItems.push(newSubjectItems.shift())
 

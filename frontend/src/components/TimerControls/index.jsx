@@ -6,6 +6,7 @@ import style from './style.module.css'
 const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject, onCallSnackbar}) => {
   const [showPlay, setShowPlay] = useState(true)
   const [showStop, setShowStop] = useState(true)
+  const [showNext, setShowNext] = useState(true)
 
   const disableStopControl = delay => {
     onStartTimer()
@@ -45,6 +46,14 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
       delay: snackbarDelay
     })
   }
+
+  const handleGetNextSubject = async () => {
+    setShowNext(false)
+
+    await onGetNextSubject()
+
+    setShowNext(true)
+  }
   
   return (
     <div className={style.timerControls}>
@@ -52,7 +61,8 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
         <button 
           type="button" 
           className={style.timerControl} 
-          onClick={onGetNextSubject}
+          disabled={!showNext}
+          onClick={handleGetNextSubject}
         >
           <FaArrowRight />
         </button>
@@ -63,8 +73,8 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
           type="button"
           name="play"
           className={style.timerControl} 
-          onClick={handleControlClick}
           disabled={!showPlay}
+          onClick={handleControlClick}
         >
           <FaPlay />
         </button>
@@ -75,8 +85,8 @@ const TimerControls = ({ onStartTimer, onStopTimer, timerState, onGetNextSubject
           type="button"
           name="stop"
           className={style.timerControl}
-          onClick={handleControlClick}
           disabled={!showStop}
+          onClick={handleControlClick}
         >
           <FaPause />
         </button>
