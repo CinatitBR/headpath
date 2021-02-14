@@ -79,7 +79,7 @@ const setCurrentSubject = async () => {
     query = `
       SET @current_subject_id = (
         SELECT subject_id FROM subject 
-        WHERE position =  @min_position
+        WHERE position = @min_position
       )
     `
 
@@ -89,14 +89,15 @@ const setCurrentSubject = async () => {
     query = `
       UPDATE subject
       SET position = position - 1
+      ORDER BY position ASC
     ` 
 
     await db.query(query)
 
-    // Define previous current subject as last position
+    // Define current subject as last position
     query = `
       UPDATE subject
-      SET position = @max_position + 1
+      SET position = @max_position
       WHERE subject_id = @current_subject_id
     `
 
