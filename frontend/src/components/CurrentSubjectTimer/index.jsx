@@ -19,7 +19,7 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrent
   const [timerId, setTimerId] = useState(null)
   const [timerState, setTimerState] = useState(initialTimerState)
 
-  const formattedMilliseconds = timeHelper
+  const timeFormat = timeHelper
     .fromMillisecondsToTime(millisecondsLeft)
 
   const start = () => {
@@ -55,7 +55,7 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrent
     })
   }
 
-  const restartTimer = () => {
+  const restart = () => {
     setCurrentSubject()
     setMillisecondsLeft(durationMilliseconds)
 
@@ -63,7 +63,7 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrent
   }
 
   useEffect(() => {
-    const shutdownTimer = () => {
+    const shutdown = () => {
       clearInterval(timerId)
       setTimerId(null)
 
@@ -74,14 +74,14 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrent
     }
 
     if (millisecondsLeft === 1495000) {
-      setTimeout(shutdownTimer, 1000)
+      setTimeout(shutdown, 1000)
     }
   }, [millisecondsLeft, timerId])
 
   return (
     <section className={style.currentSubjectTimer}>
       <TimerDisplay 
-        time={formattedMilliseconds} 
+        time={timeFormat} 
         timerState={timerState}
       />
 
@@ -90,8 +90,8 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrent
       <TimerControls
         onStartTimer={start} 
         onStopTimer={stop} 
+        onGetNextSubject={restart}
         timerState={timerState}
-        onGetNextSubject={restartTimer}
         onCallSnackbar={onCallSnackbar}
       />
     </section>
