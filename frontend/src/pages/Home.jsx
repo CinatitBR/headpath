@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import Header from '../components/Header'
-import CurrentSubjectTimer from '../components/CurrentSubjectTimer'
+import TimerWrapper from '../components/TimerWrapper'
 import SubjectList from '../components/SubjectList'
 import Modal from '../components/Modal'
 import SubjectForm from '../components/SubjectForm'
@@ -79,7 +79,7 @@ const App = () => {
 
         <main>
           {currentSubject && 
-            <CurrentSubjectTimer 
+            <TimerWrapper 
               currentSubject={currentSubject} 
               setCurrentSubject={setCurrentSubject}
               onCallSnackbar={handleCallSnackbar}

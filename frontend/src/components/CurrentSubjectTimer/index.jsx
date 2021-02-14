@@ -11,7 +11,7 @@ const initialTimerState = {
   finished: false
 }
 
-const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrentSubject, onCallSnackbar }) => {
+const TimerWrapper = ({ currentSubject: { subject, duration }, setCurrentSubject, onCallSnackbar }) => {
   const durationMilliseconds = timeHelper
     .fromTimeToMilliseconds(duration)
 
@@ -79,7 +79,7 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrent
   }, [millisecondsLeft, timerId])
 
   return (
-    <section className={style.currentSubjectTimer}>
+    <section className={style.timerWrapper}>
       <TimerDisplay 
         time={timeFormat} 
         timerState={timerState}
@@ -98,4 +98,4 @@ const CurrentSubjectTimer = ({ currentSubject: { subject, duration }, setCurrent
   )
 }
 
-export default CurrentSubjectTimer
+export default TimerWrapper
