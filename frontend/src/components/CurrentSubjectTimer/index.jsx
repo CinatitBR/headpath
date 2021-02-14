@@ -8,27 +8,27 @@ import style from './style.module.css'
 
 const initialTimerState = {
   running: null,
-  finished: false
+  finished: false,
 }
 
-const TimerWrapper = ({ currentSubject: { subject, duration }, setCurrentSubject, onCallSnackbar }) => {
-  const durationMilliseconds = timeHelper
-    .fromTimeToMilliseconds(duration)
+const TimerWrapper = ({
+  currentSubject: { subject, duration },
+  setCurrentSubject,
+  onCallSnackbar,
+}) => {
+  const durationMilliseconds = timeHelper.fromTimeToMilliseconds(duration)
 
   const [millisecondsLeft, setMillisecondsLeft] = useState(durationMilliseconds)
   const [timerId, setTimerId] = useState(null)
   const [timerState, setTimerState] = useState(initialTimerState)
 
-  const timeFormat = timeHelper
-    .fromMillisecondsToTime(millisecondsLeft)
+  const timeFormat = timeHelper.fromMillisecondsToTime(millisecondsLeft)
 
   const start = () => {
     if (timerId) return
-    
-    const tick = () => {  
-      setMillisecondsLeft(prevMillisecondsLeft =>
-        prevMillisecondsLeft - 1000
-      )
+
+    const tick = () => {
+      setMillisecondsLeft((prevMillisecondsLeft) => prevMillisecondsLeft - 1000)
     }
 
     // Call tick immediately the first time
@@ -36,10 +36,10 @@ const TimerWrapper = ({ currentSubject: { subject, duration }, setCurrentSubject
 
     const newTimerId = setInterval(tick, 1000)
     setTimerId(newTimerId)
-    
+
     setTimerState({
-      ...timerState, 
-      running: true
+      ...timerState,
+      running: true,
     })
   }
 
@@ -50,8 +50,8 @@ const TimerWrapper = ({ currentSubject: { subject, duration }, setCurrentSubject
     setTimerId(null)
 
     setTimerState({
-      ...timerState, 
-      running: false
+      ...timerState,
+      running: false,
     })
   }
 
@@ -69,7 +69,7 @@ const TimerWrapper = ({ currentSubject: { subject, duration }, setCurrentSubject
 
       setTimerState({
         running: null,
-        finished: true
+        finished: true,
       })
     }
 
@@ -80,16 +80,13 @@ const TimerWrapper = ({ currentSubject: { subject, duration }, setCurrentSubject
 
   return (
     <section className={style.timerWrapper}>
-      <TimerDisplay 
-        time={timeFormat} 
-        timerState={timerState}
-      />
+      <TimerDisplay time={timeFormat} timerState={timerState} />
 
       <CurrentSubject subject={subject} timerState={timerState} />
 
       <TimerControls
-        onStartTimer={start} 
-        onStopTimer={stop} 
+        onStartTimer={start}
+        onStopTimer={stop}
         onGetNextSubject={restart}
         timerState={timerState}
         onCallSnackbar={onCallSnackbar}
