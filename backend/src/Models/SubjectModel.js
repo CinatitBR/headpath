@@ -33,17 +33,25 @@ const findOne = async ({ subject }) => {
 }
 
 const create = async ({ subject, duration }) => {
-  const sql = `
-    INSERT INTO subject (subject, duration)
-    VALUES (?, ?)
+  const sql1 = `
+    SET @new_position = (SELECT MAX(position) + 1 FROM subject)
+  `
+
+  const sql2 = `
+    INSERT INTO subject (subject, duration, position)
+    VALUES (?, ?, @new_position)
   `
 
   try {
-    const [results, fields] = await db.query(sql, [subject, duration])
-    const { insertId } = results
+    await db.query('START TRANSACTION')
+
+    await db.query(sql1)
+    const [results, fields] = await db.query(sql2, [subject, duration])
+
+    await db.query('COMMIT')
 
     const newSubject = { 
-      subject_id: insertId, 
+      subject_id: results.insertId, 
       subject, 
       duration 
     }
@@ -51,6 +59,8 @@ const create = async ({ subject, duration }) => {
     return newSubject
   }
   catch (err) {
+    await db.query('ROLLBACK')
+
     throw new Error(err)
   }
 }
