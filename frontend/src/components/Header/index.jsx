@@ -1,3 +1,4 @@
+import BreakCountdown from '../BreakCountdown'
 import { FaPlus } from 'react-icons/fa'
 
 import style from './style.module.css'
@@ -16,6 +17,8 @@ const Header = ({ onModalOpen }) => {
       >
         <FaPlus />
       </button>
+
+      <BreakCountdown />
     </header>
   )
 }
