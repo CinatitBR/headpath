@@ -12,6 +12,7 @@ const ProgressRing = ({ radius, strokeWidth, progress }) => {
   return (
     <div 
       className={style.progressRing} 
+      style={{height: 2 * radius}}
     >
       <svg 
         height={2 * radius}
