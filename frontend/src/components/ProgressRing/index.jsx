@@ -1,36 +1,40 @@
-import { FaMugHot } from 'react-icons/fa'
-
 import style from './style.module.css'
 
-const ProgressRing = ({ radius, strokeWidth, progress }) => {
+const ProgressRing = ({ radius, strokeWidth, strokeColor, contentColor, progress, children }) => {
+  const svgHeight = 2 * radius
+  const svgWidth = 2 * radius
+
   const normalizedRadius = radius - (strokeWidth * 2)
   const circumference = normalizedRadius * 2 * Math.PI
 
   const strokeDasharray = `${circumference} ${circumference}`
   const strokeDashoffset = circumference - ((progress / 100) * circumference)
 
+  const fontSize = `${radius - 5}px`
+
   return (
     <div 
       className={style.progressRing} 
-      style={{height: 2 * radius}}
+      style={{height: svgHeight}}
     >
       <svg 
-        height={2 * radius}
-        width={2 * radius}
+        height={svgHeight}
+        width={svgWidth}
       >
         <circle 
           fill="transparent"
-          stroke="#2962FF"
-          strokeWidth={strokeWidth}
-          strokeDasharray={strokeDasharray}
           r={normalizedRadius}
           cx={radius}
           cy={radius} 
-          style={{strokeDashoffset}}
+          strokeWidth={strokeWidth}
+          strokeDasharray={strokeDasharray}
+          style={{strokeDashoffset, stroke: strokeColor}}
         />
       </svg>
 
-      <FaMugHot className={style.icon} />
+      <div className={style.content} style={{ fontSize, color: contentColor }}>
+        {children}
+      </div>
     </div>
   )
 }

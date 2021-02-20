@@ -1,5 +1,6 @@
 import ProgressRing from '../ProgressRing'
-import { FaPlus } from 'react-icons/fa'
+
+import { FaPlus, FaMugHot } from 'react-icons/fa'
 
 import style from './style.module.css'
 
@@ -18,11 +19,20 @@ const Header = ({ onModalOpen }) => {
         <FaPlus />
       </button>
 
-      <ProgressRing
-        radius={40}
-        strokeWidth={4}
-        progress={100}
-      />
+
+      <div className="breakCountdown">
+        <button type="button">
+          <ProgressRing
+            radius={30}
+            strokeWidth={4}
+            strokeColor="var(--light-black)"
+            contentColor="var(--light-black)"
+            progress={80}
+          >
+            <FaMugHot />
+          </ProgressRing>
+        </button>
+      </div>
     </header>
   )
 }
