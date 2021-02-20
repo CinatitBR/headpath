@@ -1,0 +1,25 @@
+.progressRing {
+  font-size: 30px;
+
+  position: relative;
+}
+
+.progressRing svg {
+  /* background: red; */
+}
+
+.progressRing .icon {
+  position: absolute;
+  top: 45%;  
+  left: 52%;
+
+  transform: translate(-50%, -50%);
+}
+
+.progressRing svg circle {
+  transition: stroke-dashoffset 0.35s;
+
+  /* axis compensation */
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
