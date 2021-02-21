@@ -99,16 +99,6 @@ const App = () => {
                 error={error}
               />
             </div>
-
-            <ProgressRing 
-              radius={70}
-              strokeWidth={20}
-              progress={20}
-              progressColor="#03a9f4"
-              pathColor="#f3f3f3"
-            >
-              <FaMugHot size={'50px'} />
-            </ProgressRing>
           </section>
 
           <Snackbar 

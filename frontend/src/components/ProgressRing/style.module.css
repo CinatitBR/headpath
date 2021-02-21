@@ -3,7 +3,7 @@
   position: relative;
 } 
 
-.progressRing .content {
+.progressRing .children {
   position: absolute;
   top: 0;
   left: 0;

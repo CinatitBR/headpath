@@ -1,6 +1,6 @@
 import style from './style.module.css'
 
-const ProgressRing = ({ radius, strokeWidth, progress, progressColor, pathColor, contentColor, children }) => {
+const ProgressRing = ({ radius, strokeWidth, progress, progressColor, pathColor, children }) => {
   const circumference = radius * 2 * Math.PI
   const height = (2 * radius) + strokeWidth
   const width = (2 * radius) + strokeWidth
@@ -34,8 +34,8 @@ const ProgressRing = ({ radius, strokeWidth, progress, progressColor, pathColor,
   }
 
   return (
-    <div className={style.progressRing} style={{...measurements}}>
-      <svg style={{...measurements}}>
+    <div className={style.progressRing} style={measurements}>
+      <svg style={measurements}>
         <circle 
           cx={radius} 
           cy={radius} 
@@ -51,7 +51,7 @@ const ProgressRing = ({ radius, strokeWidth, progress, progressColor, pathColor,
         />
       </svg>
       
-      <div className={style.content}>
+      <div className={style.children}>
         {children}
       </div>
     </div>
