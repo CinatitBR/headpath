@@ -27,7 +27,7 @@
 
   border-radius: 10px;
   padding: 5px;
-  background: #25A835;
+  background: var(--green);
 }
 
 /* fadeIn */
