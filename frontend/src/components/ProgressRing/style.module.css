@@ -1,5 +1,62 @@
 .progressRing {
   position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.progressRing svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.progressRing svg circle {
+  width: 150px;
+  height: 150px;
+  fill: none;
+  stroke-width: 10;
+  stroke: #000;
+  transform: translate(5px, 5px);
+
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  stroke-linecap: round;
+}
+
+.progressRing svg circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: #f3f3f3;
+}
+
+.progressRing svg circle:nth-child(2) {
+  /* stroke-dashoffset: calc(440 - 440 * (87 / 100)); */
+  stroke-dashoffset: 57.2;
+  stroke: #03a9f4;
+}
+
+.progressRing .number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #111;
+}
+
+.progressRing .number h2 {
+  font-size: 48px;
+}
+
+.progressRing .number h2 span {
+  font-size: 24px;
+}
+
+/* .progressRing {
+  position: relative;
 }
 
 .progressRing .content {
@@ -13,7 +70,6 @@
 .progressRing svg circle {
   transition: stroke-dashoffset 0.35s;
 
-  /* axis compensation */
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
-}
+} */

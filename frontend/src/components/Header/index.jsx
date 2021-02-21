@@ -18,21 +18,6 @@ const Header = ({ onModalOpen }) => {
       >
         <FaPlus />
       </button>
-
-
-      <div className="breakCountdown">
-        <button type="button">
-          <ProgressRing
-            radius={30}
-            strokeWidth={4}
-            strokeColor="var(--light-black)"
-            contentColor="var(--light-black)"
-            progress={80}
-          >
-            <FaMugHot />
-          </ProgressRing>
-        </button>
-      </div>
     </header>
   )
 }

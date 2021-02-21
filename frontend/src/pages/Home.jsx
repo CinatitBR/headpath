@@ -6,6 +6,7 @@ import SubjectList from '../components/SubjectList'
 import Modal from '../components/Modal'
 import SubjectForm from '../components/SubjectForm'
 import Snackbar from '../components/Snackbar'
+import ProgressRing from '../components/ProgressRing'
 
 import '../global.css'
 import style from './Home.module.css'
@@ -96,6 +97,8 @@ const App = () => {
                 error={error}
               />
             </div>
+
+            <ProgressRing />
           </section>
 
           <Snackbar 
