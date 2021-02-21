@@ -6,7 +6,9 @@ import SubjectList from '../components/SubjectList'
 import Modal from '../components/Modal'
 import SubjectForm from '../components/SubjectForm'
 import Snackbar from '../components/Snackbar'
+
 import ProgressRing from '../components/ProgressRing'
+import { FaMugHot } from 'react-icons/fa'
 
 import '../global.css'
 import style from './Home.module.css'
@@ -98,7 +100,15 @@ const App = () => {
               />
             </div>
 
-            <ProgressRing />
+            <ProgressRing 
+              radius={70}
+              strokeWidth={20}
+              progress={20}
+              progressColor="#03a9f4"
+              pathColor="#f3f3f3"
+            >
+              <FaMugHot size={'50px'} />
+            </ProgressRing>
           </section>
 
           <Snackbar 
