@@ -25,6 +25,7 @@ button {
   background: none;
   border: none;
   font-family: inherit;
+  outline: none;
 }
 
 button:disabled {
