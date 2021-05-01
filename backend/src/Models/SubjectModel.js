@@ -34,7 +34,10 @@ const findOne = async ({ subject }) => {
 
 const create = async ({ subject, duration }) => {
   const sql1 = `
-    SET @new_position = (SELECT MAX(position) + 1 FROM subject)
+    SET @new_position = (
+      SELECT IFNULL (MAX(position) + 1, 1) 
+      FROM subject
+    )
   `
 
   const sql2 = `
