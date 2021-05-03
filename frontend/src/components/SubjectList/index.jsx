@@ -14,9 +14,9 @@ const SubjectList = ({ subjectItems, isLoading, error }) => {
     <div className={style.subjectList}>
       {
         subjectItems
-          .map(({subject_id, subject, duration}) => 
+          .map(({id, subject, duration}) => 
             <SubjectListItem
-              key={subject_id}
+              key={id}
               subject={subject}
               duration={duration}
             />
