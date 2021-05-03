@@ -19,7 +19,7 @@
   font-size: 30px;
   font-weight: 600;
   color: var(--brand-color);
-  letter-spacing: 3px;
+  letter-spacing: 0.1rem;
 }
 
 .mainHeader .openModalIcon {
