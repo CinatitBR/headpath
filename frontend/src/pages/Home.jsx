@@ -90,6 +90,7 @@ const App = () => {
               currentSubject={currentSubject} 
               setCurrentSubject={setCurrentSubject}
               onCallSnackbar={handleCallSnackbar}
+              updateDurationProgress={updateDurationProgress}
             />
           }
 

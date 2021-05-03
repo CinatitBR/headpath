@@ -15,6 +15,7 @@ const TimerWrapper = ({
   currentSubject: { subject, duration },
   setCurrentSubject,
   onCallSnackbar,
+  updateDurationProgress
 }) => {
   const durationMilliseconds = timeHelper.fromTimeToMilliseconds(duration)
 
@@ -23,6 +24,7 @@ const TimerWrapper = ({
   const [timerState, setTimerState] = useState(initialTimerState)
 
   const timeFormat = timeHelper.fromMillisecondsToTime(millisecondsLeft)
+
 
   const start = () => {
     if (timerId) return
