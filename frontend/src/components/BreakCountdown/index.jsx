@@ -11,10 +11,10 @@ const BreakCountdown = () => {
           radius={25}
           strokeWidth={5}
           progress={50}
-          progressColor="var(--brown)"
+          progressColor="var(--light-black)"
           pathColor="var(--grey)"
         >
-          <FaMugHot size={'25px'} color={'var(--brown)'} />
+          <FaMugHot size={'25px'} color={'var(--light-black)'} />
         </ProgressRing>
       </button>
     </div>
