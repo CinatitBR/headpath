@@ -7,9 +7,6 @@ import Modal from '../components/Modal'
 import SubjectForm from '../components/SubjectForm'
 import Snackbar from '../components/Snackbar'
 
-import ProgressRing from '../components/ProgressRing'
-import { FaMugHot } from 'react-icons/fa'
-
 import '../global.css'
 import style from './Home.module.css'
 
