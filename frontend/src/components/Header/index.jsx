@@ -3,7 +3,7 @@ import { FaPlus } from 'react-icons/fa'
 
 import style from './style.module.css'
 
-const Header = ({ onModalOpen }) => {
+const Header = ({ onModalOpen, durationProgress }) => {
   return (
     <header className={style.mainHeader}>
       <a href="#" className={style.brandName}>
@@ -18,7 +18,7 @@ const Header = ({ onModalOpen }) => {
         <FaPlus />
       </button>
 
-      <BreakCountdown />
+      <BreakCountdown progress={durationProgress} />
     </header>
   )
 }

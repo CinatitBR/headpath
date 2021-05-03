@@ -3,14 +3,14 @@ import { FaMugHot } from 'react-icons/fa'
 
 import style from './style.module.css'
 
-const BreakCountdown = () => {
+const BreakCountdown = ({ progress }) => {
   return (
     <div className={style.breakCountdown}>
       <button type="button">
         <ProgressRing 
           radius={25}
           strokeWidth={5}
-          progress={50}
+          progress={progress}
           progressColor="var(--light-black)"
           pathColor="var(--grey)"
         >

@@ -15,6 +15,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [durationProgress, setDurationProgress] = useState(0)
 
   const [showSnackbar, setShowSnackbar] = useState(false)
   const [snackbarDelay, setSnackbarDelay] = useState(0)
@@ -75,7 +76,7 @@ const App = () => {
           ${isModalOpen ? style.blur : ''}
         `}
       >
-        <Header onModalOpen={handleModal} />
+        <Header onModalOpen={handleModal} durationProgress={durationProgress} />
 
         <main>
           {currentSubject && 
