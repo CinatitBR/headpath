@@ -81,7 +81,9 @@ const TimerWrapper = ({
       })
     }
 
-    if (millisecondsLeft === 1495000) {
+    const shutdownTime = 0
+
+    if (millisecondsLeft === shutdownTime) {
       setTimeout(shutdown, 1000)
     }
   }, [millisecondsLeft, timerId])
