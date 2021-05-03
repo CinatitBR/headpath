@@ -52,6 +52,12 @@ const App = () => {
     setSubjectItems(newSubjectItems)
   }
 
+  const updateDurationProgress = ({durationTotal, durationPassed}) => {
+    const currentDurationProgress = (durationPassed / durationTotal) * 100
+
+    setDurationProgress(currentDurationProgress)
+  }
+
   useEffect(() => {
     const getSubjects = async () => {
       const response = await fetch('/subjects')
