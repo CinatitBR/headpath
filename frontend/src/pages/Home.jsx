@@ -52,8 +52,9 @@ const App = () => {
     setSubjectItems(newSubjectItems)
   }
 
-  const updateDurationProgress = ({durationTotal, durationPassed}) => {
-    const currentDurationProgress = (durationPassed / durationTotal) * 100
+  const updateDurationProgress = (durationTotal, durationPassed) => {
+    // Evaluate progress percentage
+    const currentDurationProgress = Math.trunc((durationPassed / durationTotal) * 100)
 
     setDurationProgress(currentDurationProgress)
   }
