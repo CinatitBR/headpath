@@ -65,6 +65,12 @@ const TimerWrapper = ({
   }
 
   useEffect(() => {
+    const millisecondsPassed = durationMilliseconds - millisecondsLeft
+
+    updateDurationProgress(durationMilliseconds, millisecondsPassed)
+  }, [durationMilliseconds, millisecondsLeft, updateDurationProgress])
+
+  useEffect(() => {
     const shutdown = () => {
       clearInterval(timerId)
       setTimerId(null)
