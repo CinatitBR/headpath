@@ -54,7 +54,7 @@ const create = async ({ subject, duration }) => {
     await db.query('COMMIT')
 
     const newSubject = { 
-      subject_id: results.insertId, 
+      id: results.insertId, 
       subject, 
       duration 
     }
@@ -90,8 +90,8 @@ const setCurrentSubject = async () => {
 
     // Get current subject id
     query = `
-      SET @current_subject_id = (
-        SELECT subject_id FROM subject 
+      SET @current_id = (
+        SELECT id FROM subject 
         WHERE position = @min_position
       )
     `
@@ -111,7 +111,7 @@ const setCurrentSubject = async () => {
     query = `
       UPDATE subject
       SET position = @max_position
-      WHERE subject_id = @current_subject_id
+      WHERE id = @current_id
     `
 
     await db.query(query)
