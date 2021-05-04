@@ -1,3 +1,4 @@
+import BreakMenu from '../BreakMenu'
 import ProgressRing from '../ProgressRing'
 import { FaMugHot } from 'react-icons/fa'
 
@@ -17,6 +18,8 @@ const BreakCountdown = ({ progress }) => {
           <FaMugHot size={'25px'} color={'var(--light-black)'} />
         </ProgressRing>
       </button>
+
+      <BreakMenu />
     </div>
   )
 }
