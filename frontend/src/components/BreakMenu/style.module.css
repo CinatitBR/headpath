@@ -1,0 +1,51 @@
+.BreakMenu {
+  position: absolute;
+  right: 0;
+  top: 80px;
+
+  text-align: center;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.BreakMenu .title {
+  color: var(--brand-color);
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.BreakMenu .fields {
+  /* margin-top: 10px; */
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.BreakMenu .fields .field label {
+  font-size: 18px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+}
+
+.BreakMenu .fields .field label span {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+/* Edit button */
+.editButton {
+  background: var(--brand-color);
+  border-radius: 10px;
+  padding: 2px 10px;
+  margin-top: 10px;
+
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+}
